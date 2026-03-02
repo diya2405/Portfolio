@@ -5,63 +5,70 @@ import { FiGithub, FiExternalLink, FiX } from 'react-icons/fi';
 const projects = [
   {
     id: 1,
-    title: 'JobFlow – AI Recruitment App',
-    shortDesc: 'AI-powered recruitment platform built with Flutter + Firebase + AI',
-    fullDesc: `JobFlow is an intelligent recruitment platform that uses AI to streamline the job application process.
-    Built with Flutter for cross-platform support and Firebase for real-time data management, it features AI-powered
-    job matching, resume parsing, interview scheduling, and applicant tracking. The app uses ML models to score
-    candidates and match them with the most suitable job postings, significantly reducing hiring time.`,
-    tech: ['Flutter', 'Firebase', 'Dart', 'AI/ML', 'REST API'],
+    title: 'JobFlow – Flutter Job Portal',
+    shortDesc: 'Flutter + Firebase job portal for seamless job discovery and tracking',
+    fullDesc: `JobFlow is a Flutter & Firebase-based job portal that simplifies job discovery and application tracking.
+    It supports candidate profiles, recruiter postings, and real-time updates, helping connect applicants with
+    the right opportunities. The app focuses on a smooth experience for both candidates and recruiters.`,
+    tech: ['Flutter', 'Firebase', 'Dart'],
     color: 'from-blue-500 to-cyan-500',
     icon: '🚀',
     github: 'https://github.com/diya2405',
     demo: null,
-    features: ['AI Job Matching', 'Resume Parser', 'Real-time Chat', 'Smart Notifications', 'Analytics Dashboard'],
+    features: ['Job Discovery', 'Application Tracking', 'Recruiter Dashboard', 'Real-time Updates', 'Profile Management'],
   },
   {
     id: 2,
-    title: 'CodeQuest – Coding Platform',
-    shortDesc: 'Interactive coding platform with challenges and real-time code execution',
-    fullDesc: `CodeQuest is a competitive programming platform designed to help developers improve their coding skills.
-    Features include real-time code execution in multiple languages, a curated collection of algorithmic challenges,
-    leaderboards, user progress tracking, and an AI hint system. Built with a modern tech stack to provide a
-    seamless coding experience.`,
-    tech: ['React', 'Node.js', 'Python', 'WebSocket', 'MongoDB'],
+    title: 'AI Assistant (Flutter)',
+    shortDesc: 'Conversational AI assistant with NLP-driven user interaction',
+    fullDesc: `A conversational AI assistant app built with Flutter that integrates natural language processing
+    for real-time user interaction. It focuses on an intuitive mobile experience with smart responses and
+    multi-feature assistance in one place.`,
+    tech: ['Flutter', 'Dart', 'AI/ML APIs'],
     color: 'from-purple-500 to-pink-500',
-    icon: '💻',
-    github: 'https://github.com/diya2405',
-    demo: null,
-    features: ['Code Execution Engine', '500+ Problems', 'Real-time Leaderboard', 'AI Hints', 'Multi-language Support'],
-  },
-  {
-    id: 3,
-    title: 'AI Assistant App',
-    shortDesc: 'Flutter-based AI assistant with chatbot, image generation, and translation',
-    fullDesc: `A comprehensive AI assistant application built with Flutter, combining multiple AI capabilities
-    in one elegant interface. Features include an intelligent chatbot powered by large language models,
-    AI image generation, real-time language translation for 50+ languages, and voice commands.
-    Eliminates the need to switch between multiple apps for different AI tasks.`,
-    tech: ['Flutter', 'Dart', 'OpenAI API', 'Firebase', 'REST API'],
-    color: 'from-green-500 to-emerald-500',
     icon: '🤖',
     github: 'https://github.com/diya2405',
     demo: null,
-    features: ['AI Chatbot', 'Image Generation', 'Language Translation', 'Voice Commands', 'History Sync'],
+    features: ['Conversational UI', 'Smart Responses', 'Mobile-first Design', 'AI Integrations', 'Fast Interaction'],
   },
   {
-    id: 4,
-    title: 'Sentiment Analysis ML',
-    shortDesc: 'NLP-based sentiment analysis system with real-time text classification',
-    fullDesc: `A machine learning system for analyzing sentiment in text using Natural Language Processing.
-    Built with Python and scikit-learn, it classifies text as positive, negative, or neutral with high accuracy.
-    Includes data preprocessing pipelines, model training with multiple algorithms, a visualization dashboard,
-    and a REST API for integration. Applied to social media analysis and product review classification.`,
-    tech: ['Python', 'scikit-learn', 'NLTK', 'Flask', 'Pandas'],
-    color: 'from-orange-500 to-red-500',
+    id: 3,
+    title: 'Sentiment Analysis',
+    shortDesc: 'NLP project classifying text into positive, negative, or neutral sentiments',
+    fullDesc: `A Python-based sentiment analysis project that classifies user reviews and social media text
+    into positive, negative, or neutral sentiments using NLP techniques and ML models.`,
+    tech: ['Python', 'NLP', 'scikit-learn', 'TensorFlow'],
+    color: 'from-green-500 to-emerald-500',
     icon: '🧠',
     github: 'https://github.com/diya2405',
     demo: null,
-    features: ['NLP Pipeline', 'Multi-class Classification', 'Visualization Dashboard', 'REST API', 'Real-time Analysis'],
+    features: ['Text Preprocessing', 'Multi-class Classification', 'Model Training', 'Evaluation Metrics', 'Insights Dashboard'],
+  },
+  {
+    id: 4,
+    title: 'Face Recognition',
+    shortDesc: 'Real-time face detection and recognition system',
+    fullDesc: `A real-time face detection and recognition system using computer vision and deep learning.
+    Built to identify faces with high accuracy for practical security and identification use cases.`,
+    tech: ['Python', 'OpenCV', 'Deep Learning'],
+    color: 'from-orange-500 to-red-500',
+    icon: '👁️',
+    github: 'https://github.com/diya2405',
+    demo: null,
+    features: ['Face Detection', 'Recognition Pipeline', 'Real-time Processing', 'High Accuracy', 'Camera Integration'],
+  },
+  {
+    id: 5,
+    title: 'Speech to Text',
+    shortDesc: 'Convert spoken language into accurate written text',
+    fullDesc: `An application that converts spoken language into written text using speech recognition APIs
+    and ML models. Designed to improve accessibility and productivity with reliable transcription.`,
+    tech: ['Python', 'Speech Recognition', 'Flutter'],
+    color: 'from-indigo-500 to-purple-500',
+    icon: '🎙️',
+    github: 'https://github.com/diya2405',
+    demo: null,
+    features: ['Live Transcription', 'Multi-language Support', 'Noise Handling', 'Simple UI', 'Export Options'],
   },
 ];
 
@@ -217,7 +224,7 @@ export default function Projects() {
             Featured <span className="gradient-text">Projects</span>
           </h2>
           <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-            Click on any project card to see detailed information
+            A featured selection from 15+ academic projects. Click any card to see more details.
           </p>
         </motion.div>
 

@@ -3,39 +3,41 @@ import { useRef } from 'react';
 
 const skillCategories = [
   {
-    title: 'Languages',
+    title: 'Mobile & Frontend',
     color: 'from-blue-500 to-cyan-500',
     skills: [
-      { name: 'Python', level: 85, icon: '🐍' },
-      { name: 'Dart/Flutter', level: 90, icon: '🎯' },
-      { name: 'Java', level: 75, icon: '☕' },
-      { name: 'JavaScript', level: 80, icon: '🌐' },
-      { name: 'PHP', level: 65, icon: '🔧' },
-      { name: 'HTML/CSS', level: 90, icon: '🎨' },
+      { name: 'Flutter', level: 90, icon: '📱' },
+      { name: 'Dart', level: 88, icon: '🎯' },
+      { name: 'React', level: 78, icon: '⚛️' },
+      { name: 'HTML5', level: 90, icon: '🌐' },
+      { name: 'CSS3', level: 88, icon: '🎨' },
     ],
   },
   {
-    title: 'Frameworks & Tools',
+    title: 'Backend & Database',
     color: 'from-purple-500 to-pink-500',
     skills: [
-      { name: 'Flutter', level: 90, icon: '📱' },
-      { name: 'Firebase', level: 80, icon: '🔥' },
-      { name: 'React', level: 70, icon: '⚛️' },
-      { name: 'VS Code', level: 95, icon: '💻' },
-      { name: 'Git/GitHub', level: 85, icon: '🔀' },
-      { name: 'Android Studio', level: 75, icon: '🤖' },
+      { name: 'Firebase', level: 85, icon: '🔥' },
+      { name: 'Python', level: 82, icon: '🐍' },
     ],
   },
   {
-    title: 'AI & Backend',
+    title: 'AI / ML',
     color: 'from-green-500 to-emerald-500',
     skills: [
-      { name: 'Machine Learning', level: 75, icon: '🧠' },
-      { name: 'TensorFlow/scikit', level: 70, icon: '🤖' },
-      { name: 'REST APIs', level: 80, icon: '🔌' },
-      { name: 'MySQL/SQLite', level: 75, icon: '🗄️' },
-      { name: 'NLP', level: 65, icon: '💬' },
-      { name: 'OpenAI API', level: 70, icon: '✨' },
+      { name: 'TensorFlow', level: 75, icon: '🧠' },
+      { name: 'OpenCV', level: 72, icon: '👁️' },
+      { name: 'scikit-learn', level: 70, icon: '📊' },
+    ],
+  },
+  {
+    title: 'Tools & Platforms',
+    color: 'from-orange-500 to-red-500',
+    skills: [
+      { name: 'Git', level: 88, icon: '🔀' },
+      { name: 'GitHub', level: 90, icon: '🐙' },
+      { name: 'VS Code', level: 95, icon: '💻' },
+      { name: 'Android Studio', level: 78, icon: '🤖' },
     ],
   },
 ];

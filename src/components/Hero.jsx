@@ -62,9 +62,9 @@ export default function Hero() {
             >
               <TypeAnimation
                 sequence={[
-                  'Flutter Developer', 2000,
-                  'AI Engineer', 2000,
-                  'Full Stack Developer', 2000,
+                  'IT Engineering Student', 2000,
+                  'Flutter & Firebase Developer', 2000,
+                  'AI/ML Enthusiast', 2000,
                   'Mobile App Developer', 2000,
                   'Software Developer', 2000,
                 ]}
@@ -81,8 +81,8 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-gray-400 text-lg mb-8 max-w-lg"
             >
-              Passionate IT student building innovative solutions with Flutter, AI, and modern web technologies.
-              Creating impactful applications that solve real-world problems.
+              IT Engineering student at CSPIT, CHARUSAT University, focused on Flutter & Firebase development and AI/ML
+              solutions. Building impactful applications that solve real-world problems.
             </motion.p>
 
             <motion.div
@@ -128,7 +128,7 @@ export default function Hero() {
             >
               {[
                 { icon: FiGithub, href: 'https://github.com/diya2405', label: 'GitHub' },
-                { icon: FiLinkedin, href: 'https://linkedin.com/in/diya-shah', label: 'LinkedIn' },
+                { icon: FiLinkedin, href: 'https://www.linkedin.com/in/diya-shah-85ba49308/', label: 'LinkedIn' },
                 { icon: FiMail, href: 'mailto:diyanamya@gmail.com', label: 'Email' },
               ].map(({ icon: Icon, href, label }) => (
                 <motion.a

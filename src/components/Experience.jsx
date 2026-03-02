@@ -3,11 +3,11 @@ import { motion, useInView } from 'framer-motion';
 
 const experiences = [
   {
-    title: 'Flutter Development Intern',
-    company: 'Toshal Infotech, Surat',
-    period: '2024',
+    title: 'Flutter-based AI Applications',
+    company: 'Academic Projects',
+    period: '2024 – Present',
     type: 'work',
-    description: 'Developed mobile applications using Flutter and Dart. Built cross-platform apps with Firebase integration, REST API consumption, and state management.',
+    description: 'Building Flutter applications with Firebase integration and AI/ML features like NLP, speech recognition, and sentiment analysis.',
     icon: '💼',
     color: 'border-blue-500',
   },
@@ -15,26 +15,32 @@ const experiences = [
 
 const achievements = [
   {
-    title: 'Web Development Certification',
-    provider: 'Udemy',
-    year: '2023',
+    title: 'Flutter & Firebase Certifications',
+    provider: 'Multiple Platforms',
+    year: '2023 – 2024',
     icon: '🏆',
     color: 'border-yellow-500',
   },
   {
-    title: 'Flutter Development Internship Certificate',
-    provider: 'Toshal Infotech',
-    year: '2024',
-    icon: '📱',
+    title: 'AI/ML Certifications',
+    provider: 'Online Programs',
+    year: '2023 – 2024',
+    icon: '🤖',
     color: 'border-green-500',
+  },
+  {
+    title: 'Python & Data Science Certifications',
+    provider: 'Online Programs',
+    year: '2023 – 2024',
+    icon: '🐍',
+    color: 'border-blue-500',
   },
 ];
 
-const academicAchievements = [
-  { semester: 'Semester 1', gpa: '9.37', icon: '📚' },
-  { semester: 'Semester 2', gpa: '9.41', icon: '📚' },
-  { semester: 'Semester 3', gpa: '9.48', icon: '📚' },
-  { semester: 'Semester 4', gpa: '9.47', icon: '📚' },
+const academicHighlights = [
+  { label: 'BE IT — Semester 4', value: 'Currently Pursuing', icon: '🎓' },
+  { label: 'Diploma CGPA', value: '9.46 / 10', icon: '📚' },
+  { label: 'DDCET Rank (Gujarat)', value: '58', icon: '🏅' },
 ];
 
 export default function Experience() {
@@ -92,6 +98,9 @@ export default function Experience() {
             <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
               <span className="text-2xl">🏆</span> Certifications
             </h3>
+            <p className="text-gray-400 text-xs mb-4">
+              17+ certifications across Flutter development, AI/ML, Python, and cloud technologies.
+            </p>
             {achievements.map((cert, i) => (
               <motion.div
                 key={cert.title}
@@ -124,13 +133,13 @@ export default function Experience() {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-              <span className="text-2xl">📊</span> Academic Performance
+              <span className="text-2xl">📊</span> Academic Highlights
             </h3>
             <div className="glass p-5 rounded-xl border border-gray-700/50">
-              <p className="text-gray-400 text-xs mb-4">Diploma in IT — GPA Progression</p>
-              {academicAchievements.map((item, i) => (
+              <p className="text-gray-400 text-xs mb-4">Education milestones and achievements</p>
+              {academicHighlights.map((item, i) => (
                 <motion.div
-                  key={item.semester}
+                  key={item.label}
                   initial={{ opacity: 0, x: 20 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ delay: 0.5 + i * 0.1 }}
@@ -138,27 +147,11 @@ export default function Experience() {
                 >
                   <div className="flex items-center gap-2">
                     <span className="text-sm">{item.icon}</span>
-                    <span className="text-gray-300 text-sm">{item.semester}</span>
+                    <span className="text-gray-300 text-sm">{item.label}</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="h-2 w-20 bg-gray-700 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        animate={isInView ? { width: `${(parseFloat(item.gpa) / 10) * 100}%` } : { width: 0 }}
-                        transition={{ duration: 1, delay: 0.5 + i * 0.1 }}
-                        className="h-full bg-gradient-to-r from-blue-500 to-green-500 rounded-full"
-                      />
-                    </div>
-                    <span className="text-green-400 text-sm font-bold w-12 text-right">{item.gpa}</span>
-                  </div>
+                  <span className="text-green-400 text-sm font-bold text-right">{item.value}</span>
                 </motion.div>
               ))}
-              <div className="border-t border-gray-700 pt-4 mt-4">
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-400 text-sm">Overall Average</span>
-                  <span className="text-green-400 font-bold">9.43 / 10</span>
-                </div>
-              </div>
             </div>
           </motion.div>
         </div>

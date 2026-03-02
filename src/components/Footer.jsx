@@ -19,13 +19,13 @@ export default function Footer() {
           Diya Shah
         </motion.div>
         <p className="text-gray-400 text-sm mb-6">
-          Software Developer | Flutter | AI | Full Stack
+          IT Engineering Student | Flutter & Firebase | AI/ML Enthusiast
         </p>
 
         <div className="flex justify-center gap-4 mb-8">
           {[
             { icon: FiGithub, href: 'https://github.com/diya2405' },
-            { icon: FiLinkedin, href: 'https://linkedin.com/in/diya-shah' },
+            { icon: FiLinkedin, href: 'https://www.linkedin.com/in/diya-shah-85ba49308/' },
             { icon: FiMail, href: 'mailto:diyanamya@gmail.com' },
           ].map(({ icon: Icon, href }, i) => (
             <motion.a
