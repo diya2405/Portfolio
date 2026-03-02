@@ -10,18 +10,18 @@ const fadeInUp = {
 
 const education = [
   {
-    degree: 'Diploma in Information Technology',
-    school: 'Government Polytechnic for Girls, Surat',
-    year: '2022 – 2025',
-    grade: 'SPI: 9.37 → 9.41 → 9.48 → 9.47',
+    degree: 'BE – Information Technology',
+    school: 'CSPIT, CHARUSAT University, Changa',
+    year: 'Semester 4 (Pursuing)',
+    grade: 'Current IT Engineering Student',
     icon: '🎓',
   },
   {
-    degree: 'High School',
-    school: 'LH Boghra Sishuvihar School, Surat',
-    year: '2022',
-    grade: '83%',
-    icon: '🏫',
+    degree: 'Diploma – Computer Engineering',
+    school: 'DDCET Rank 58 (Gujarat)',
+    year: 'Completed',
+    grade: 'CGPA: 9.46',
+    icon: '🏅',
   },
 ];
 
@@ -62,14 +62,14 @@ export default function About() {
           >
             <h3 className="text-2xl font-bold text-white mb-4">Professional Summary</h3>
             <p className="text-gray-400 leading-relaxed mb-6">
-              Dedicated IT student with a passion for exploring the latest in Android, web development, and AI.
-              I thrive on applying analytical skills to solve real-world problems, with strong programming
-              capabilities and an eagerness to take on new challenges.
+              Passionate IT Engineering student at CSPIT, CHARUSAT University, building solutions with Flutter & Firebase
+              and experimenting with AI/ML. I enjoy applying analytical skills to solve real-world problems through
+              impactful applications.
             </p>
             <p className="text-gray-400 leading-relaxed mb-8">
-              With hands-on experience in Flutter development (internship at Toshal Infotech) and a portfolio
-              of innovative projects, I&apos;m eager to transition my academic knowledge into impactful applications.
-              Currently seeking opportunities to enhance my skills and contribute to cutting-edge technologies.
+              Currently working on Flutter-based AI applications while exploring speech recognition, face recognition,
+              and sentiment analysis. I&apos;ve built 15+ academic projects and earned a DDCET Rank 58 with a Diploma
+              CGPA of 9.46.
             </p>
 
             <div className="grid grid-cols-2 gap-4">

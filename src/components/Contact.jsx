@@ -81,7 +81,7 @@ export default function Contact() {
             <div className="flex gap-4 mt-8">
               {[
                 { icon: FiGithub, href: 'https://github.com/diya2405', label: 'GitHub' },
-                { icon: FiLinkedin, href: 'https://linkedin.com/in/diya-shah', label: 'LinkedIn' },
+                { icon: FiLinkedin, href: 'https://www.linkedin.com/in/diya-shah-85ba49308/', label: 'LinkedIn' },
                 { icon: FiMail, href: 'mailto:diyanamya@gmail.com', label: 'Email' },
               ].map(({ icon: Icon, href, label }) => (
                 <motion.a
