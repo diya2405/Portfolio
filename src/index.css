@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -14,33 +14,127 @@
 }
 
 @layer utilities {
-  .gradient-text {
-    @apply bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent;
+  /* Dark mode (hacker) gradient text */
+  .dark .gradient-text {
+    @apply bg-gradient-to-r from-hacker-500 via-emerald-400 to-cyan-400 bg-clip-text text-transparent;
   }
+  /* Light mode gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 bg-clip-text text-transparent;
+  }
+
+  /* Glass effects */
   .glass {
     @apply bg-white/10 backdrop-blur-md border border-white/20;
   }
   .glass-dark {
     @apply bg-gray-900/50 backdrop-blur-md border border-gray-700/50;
   }
+  .dark .glass {
+    @apply bg-hacker-900/40 backdrop-blur-md border border-hacker-500/20;
+  }
   .section-padding {
     @apply py-20 px-4 sm:px-6 lg:px-8;
   }
+
+  /* Hacker terminal caret */
+  .terminal-caret::after {
+    content: '█';
+    @apply text-hacker-500 animate-blink-caret;
+  }
 }
 
-/* Custom scrollbar */
+/* Dark mode scrollbar (hacker green) */
+.dark ::-webkit-scrollbar {
+  width: 6px;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #030a04;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #00ff41;
+  border-radius: 3px;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #4ade80;
+}
+
+/* Light mode scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #1e293b;
+  background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
   background: #3b82f6;
   border-radius: 3px;
 }
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
 
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;
+}
+
+/* Scanline overlay for hacker theme */
+.dark .scanline-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 65, 0.03) 0px,
+    rgba(0, 255, 65, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* CRT effect for dark mode */
+.dark .crt-effect {
+  text-shadow: 0 0 2px rgba(0, 255, 65, 0.5), 0 0 10px rgba(0, 255, 65, 0.2);
+}
+
+/* Matrix rain characters */
+.matrix-char {
+  font-family: 'JetBrains Mono', monospace;
+  color: #00ff41;
+  text-shadow: 0 0 8px #00ff41;
+}
+
+/* Selection styling */
+.dark ::selection {
+  background: rgba(0, 255, 65, 0.3);
+  color: #00ff41;
+}
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: #1e40af;
+}
+
+/* Skill bar shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skill-shimmer {
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Focus outline for accessibility */
+*:focus-visible {
+  outline: 2px solid #00ff41;
+  outline-offset: 2px;
+}
+:root:not(.dark) *:focus-visible {
+  outline-color: #3b82f6;
 }

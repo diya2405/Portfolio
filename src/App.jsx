@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ThemeProvider } from './context/ThemeContext';
+import { ThemeProvider, useTheme } from './context/ThemeContext';
 import LoadingScreen from './components/LoadingScreen';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -12,13 +12,20 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 
-export default function App() {
+function AppContent() {
   const [loading, setLoading] = useState(true);
+  const { darkMode } = useTheme();
 
   return (
-    <ThemeProvider>
+    <>
       {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
-      <div className="bg-gray-950 min-h-screen dark">
+      <div
+        className={`min-h-screen transition-colors duration-500 ${
+          darkMode
+            ? 'bg-hacker-950 text-green-100'
+            : 'bg-white text-gray-900'
+        }`}
+      >
         <Navbar />
         <Hero />
         <About />
@@ -30,6 +37,14 @@ export default function App() {
         <Footer />
         <BackToTop />
       </div>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
     </ThemeProvider>
   );
 }
