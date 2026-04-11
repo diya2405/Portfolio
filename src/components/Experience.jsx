@@ -11,29 +11,73 @@ const experiences = [
     icon: '💼',
     color: 'border-blue-500',
   },
+  {
+    title: 'Full Stack Web Development',
+    company: 'Academic & Personal Projects',
+    period: '2024 – Present',
+    type: 'work',
+    description: 'Developing web applications using React, PHP, MySQL, and modern JavaScript. Built platforms like CodeQuest, Home Tiffin Portal, and Travel Booking System.',
+    icon: '🌐',
+    color: 'border-purple-500',
+  },
 ];
 
 const achievements = [
   {
-    title: 'Flutter & Firebase Certifications',
-    provider: 'Multiple Platforms',
+    title: 'Core Java',
+    provider: 'Certification',
     year: '2023 – 2024',
-    icon: '🏆',
-    color: 'border-yellow-500',
+    icon: '☕',
+    color: 'border-orange-500',
+    pdf: '/Diya_certi/CoreJava.pdf',
   },
   {
-    title: 'AI/ML Certifications',
-    provider: 'Online Programs',
+    title: 'Ethical Hacking',
+    provider: 'Certification',
+    year: '2023 – 2024',
+    icon: '🔒',
+    color: 'border-red-500',
+    pdf: '/Diya_certi/Ethical_Hacker.pdf',
+  },
+  {
+    title: 'Foundation of DSA',
+    provider: 'Certification',
+    year: '2023 – 2024',
+    icon: '📊',
+    color: 'border-green-500',
+    pdf: '/Diya_certi/Foundation_of_DSA.pdf',
+  },
+  {
+    title: 'JavaScript Essentials',
+    provider: 'Certification',
+    year: '2023 – 2024',
+    icon: '⚡',
+    color: 'border-yellow-500',
+    pdf: '/Diya_certi/JS_Essentials.pdf',
+  },
+  {
+    title: 'OOP with Java',
+    provider: 'Certification',
+    year: '2023 – 2024',
+    icon: '🧩',
+    color: 'border-blue-500',
+    pdf: '/Diya_certi/Intro_to_oop_with_java.pdf',
+  },
+  {
+    title: 'Cyber Security',
+    provider: 'Certification',
+    year: '2023 – 2024',
+    icon: '🛡️',
+    color: 'border-purple-500',
+    pdf: '/Diya_certi/cyber_1.pdf',
+  },
+  {
+    title: 'Prompt Engineering',
+    provider: 'Certification',
     year: '2023 – 2024',
     icon: '🤖',
-    color: 'border-green-500',
-  },
-  {
-    title: 'Python & Data Science Certifications',
-    provider: 'Online Programs',
-    year: '2023 – 2024',
-    icon: '🐍',
-    color: 'border-blue-500',
+    color: 'border-teal-500',
+    pdf: '/Diya_certi/Start_Promts.pdf',
   },
 ];
 
@@ -41,6 +85,8 @@ const academicHighlights = [
   { label: 'BE IT — Semester 4', value: 'Currently Pursuing', icon: '🎓' },
   { label: 'Diploma CGPA', value: '9.46 / 10', icon: '📚' },
   { label: 'DDCET Rank (Gujarat)', value: '58', icon: '🏅' },
+  { label: 'Total Projects', value: '20+', icon: '🚀' },
+  { label: 'Certifications', value: '10+', icon: '📜' },
 ];
 
 export default function Experience() {
@@ -99,23 +145,32 @@ export default function Experience() {
               <span className="text-2xl">🏆</span> Certifications
             </h3>
             <p className="text-gray-400 text-xs mb-4">
-              17+ certifications across Flutter development, AI/ML, Python, and cloud technologies.
+              10+ certifications across Java, Cyber Security, DSA, JavaScript, and more.
             </p>
-            {achievements.map((cert, i) => (
-              <motion.div
-                key={cert.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.4 + i * 0.15 }}
-                whileHover={{ scale: 1.05 }}
-                className={`glass p-5 rounded-xl border-l-4 ${cert.color} mb-4`}
-              >
-                <div className="text-2xl mb-2">{cert.icon}</div>
-                <h4 className="text-white font-bold text-sm">{cert.title}</h4>
-                <p className="text-blue-400 text-xs mt-1">{cert.provider}</p>
-                <p className="text-gray-500 text-xs mt-1">{cert.year}</p>
-              </motion.div>
-            ))}
+            <div className="max-h-[400px] overflow-y-auto pr-2 space-y-3 custom-scrollbar">
+              {achievements.map((cert, i) => (
+                <motion.a
+                  key={cert.title}
+                  href={cert.pdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.4 + i * 0.1 }}
+                  whileHover={{ scale: 1.03 }}
+                  className={`glass p-4 rounded-xl border-l-4 ${cert.color} block hover:bg-white/5 transition-all`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="text-xl">{cert.icon}</span>
+                    <div>
+                      <h4 className="text-white font-bold text-sm">{cert.title}</h4>
+                      <p className="text-gray-500 text-xs mt-0.5">{cert.year}</p>
+                    </div>
+                    <span className="ml-auto text-blue-400 text-xs">View PDF →</span>
+                  </div>
+                </motion.a>
+              ))}
+            </div>
             <div className="flex gap-3 mt-4">
               <a href="/certificate.jpg" target="_blank" rel="noopener noreferrer" className="flex-1 py-2 text-xs text-center rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 transition-colors border border-gray-700">
                 View Web Dev Cert

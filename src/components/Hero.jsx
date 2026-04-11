@@ -64,9 +64,10 @@ export default function Hero() {
                 sequence={[
                   'IT Engineering Student', 2000,
                   'Flutter & Firebase Developer', 2000,
+                  'Full Stack Web Developer', 2000,
                   'AI/ML Enthusiast', 2000,
+                  'React Developer', 2000,
                   'Mobile App Developer', 2000,
-                  'Software Developer', 2000,
                 ]}
                 wrapper="span"
                 speed={50}
@@ -81,8 +82,8 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-gray-400 text-lg mb-8 max-w-lg"
             >
-              IT Engineering student at CSPIT, CHARUSAT University, focused on Flutter & Firebase development and AI/ML
-              solutions. Building impactful applications that solve real-world problems.
+              IT Engineering student at CSPIT, CHARUSAT University, focused on Flutter & Firebase development, full-stack
+              web development with React, and AI/ML solutions. Building impactful applications that solve real-world problems.
             </motion.p>
 
             <motion.div
