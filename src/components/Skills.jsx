@@ -11,6 +11,7 @@ const skillCategories = [
       { name: 'React', level: 78, icon: '⚛️' },
       { name: 'HTML5', level: 90, icon: '🌐' },
       { name: 'CSS3', level: 88, icon: '🎨' },
+      { name: 'JavaScript', level: 80, icon: '⚡' },
     ],
   },
   {
@@ -19,6 +20,10 @@ const skillCategories = [
     skills: [
       { name: 'Firebase', level: 85, icon: '🔥' },
       { name: 'Python', level: 82, icon: '🐍' },
+      { name: 'Java', level: 80, icon: '☕' },
+      { name: 'PHP', level: 75, icon: '🐘' },
+      { name: 'MySQL', level: 78, icon: '🗄️' },
+      { name: 'MongoDB', level: 72, icon: '🍃' },
     ],
   },
   {
@@ -28,6 +33,7 @@ const skillCategories = [
       { name: 'TensorFlow', level: 75, icon: '🧠' },
       { name: 'OpenCV', level: 72, icon: '👁️' },
       { name: 'scikit-learn', level: 70, icon: '📊' },
+      { name: 'NLP', level: 70, icon: '💬' },
     ],
   },
   {
@@ -85,7 +91,7 @@ export default function Skills() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}

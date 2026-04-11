@@ -13,7 +13,7 @@ const projects = [
     tech: ['Flutter', 'Firebase', 'Dart'],
     color: 'from-blue-500 to-cyan-500',
     icon: '🚀',
-    github: 'https://github.com/diya2405',
+    github: 'https://github.com/diya2405/JobFlow',
     demo: null,
     features: ['Job Discovery', 'Application Tracking', 'Recruiter Dashboard', 'Real-time Updates', 'Profile Management'],
   },
@@ -22,17 +22,45 @@ const projects = [
     title: 'AI Assistant (Flutter)',
     shortDesc: 'Conversational AI assistant with NLP-driven user interaction',
     fullDesc: `A conversational AI assistant app built with Flutter that integrates natural language processing
-    for real-time user interaction. It focuses on an intuitive mobile experience with smart responses and
-    multi-feature assistance in one place.`,
-    tech: ['Flutter', 'Dart', 'AI/ML APIs'],
+    for real-time user interaction. Features include AI chatbot, image generation from text prompts,
+    and language translation in a clean, responsive mobile UI.`,
+    tech: ['Flutter', 'Dart', 'AI/ML APIs', 'Firebase'],
     color: 'from-purple-500 to-pink-500',
     icon: '🤖',
-    github: 'https://github.com/diya2405',
+    github: 'https://github.com/diya2405/Ai_Assistant',
     demo: null,
-    features: ['Conversational UI', 'Smart Responses', 'Mobile-first Design', 'AI Integrations', 'Fast Interaction'],
+    features: ['AI Chatbot', 'Image Generation', 'Language Translation', 'Mobile-first Design', 'Fast Interaction'],
   },
   {
     id: 3,
+    title: 'CodeQuest – Coding Platform',
+    shortDesc: 'React-based interactive coding platform with gamified learning',
+    fullDesc: `CodeQuest is a React-based coding platform designed to make programming learning interactive
+    and engaging. It features competitive coding challenges, gamified learning experiences,
+    skill-based progress tracking, and interactive coding competitions.`,
+    tech: ['React', 'JavaScript', 'CSS', 'Vite'],
+    color: 'from-indigo-500 to-blue-500',
+    icon: '💻',
+    github: 'https://github.com/diya2405/CodeQuest',
+    demo: null,
+    features: ['Coding Challenges', 'Gamified Learning', 'Progress Tracking', 'Competitions', 'Interactive UI'],
+  },
+  {
+    id: 4,
+    title: 'VedaVerses',
+    shortDesc: 'A JavaScript-based web application for exploring sacred texts',
+    fullDesc: `VedaVerses is a web application built with JavaScript that provides an interactive way
+    to explore and read verses from sacred texts. It features a clean, accessible interface
+    with search and navigation capabilities.`,
+    tech: ['JavaScript', 'HTML', 'CSS'],
+    color: 'from-amber-500 to-orange-500',
+    icon: '📜',
+    github: 'https://github.com/diya2405/VedaVerses',
+    demo: null,
+    features: ['Verse Exploration', 'Search Functionality', 'Responsive Design', 'Clean UI', 'Navigation'],
+  },
+  {
+    id: 5,
     title: 'Sentiment Analysis',
     shortDesc: 'NLP project classifying text into positive, negative, or neutral sentiments',
     fullDesc: `A Python-based sentiment analysis project that classifies user reviews and social media text
@@ -45,30 +73,74 @@ const projects = [
     features: ['Text Preprocessing', 'Multi-class Classification', 'Model Training', 'Evaluation Metrics', 'Insights Dashboard'],
   },
   {
-    id: 4,
-    title: 'Face Recognition',
-    shortDesc: 'Real-time face detection and recognition system',
-    fullDesc: `A real-time face detection and recognition system using computer vision and deep learning.
-    Built to identify faces with high accuracy for practical security and identification use cases.`,
-    tech: ['Python', 'OpenCV', 'Deep Learning'],
-    color: 'from-orange-500 to-red-500',
-    icon: '👁️',
-    github: 'https://github.com/diya2405',
+    id: 6,
+    title: 'Home Tiffin Portal',
+    shortDesc: 'PHP/MySQL platform connecting home cooks with working professionals',
+    fullDesc: `A Home Tiffin Ordering Portal built using PHP and MySQL that allows users to register,
+    login, and access tiffin services. This project simulates a basic food ordering system
+    for homemade tiffin services, connecting home cooks to working professionals.`,
+    tech: ['PHP', 'MySQL', 'HTML', 'CSS'],
+    color: 'from-yellow-500 to-amber-500',
+    icon: '🍱',
+    github: 'https://github.com/diya2405/home-tiffine-portal',
     demo: null,
-    features: ['Face Detection', 'Recognition Pipeline', 'Real-time Processing', 'High Accuracy', 'Camera Integration'],
+    features: ['User Registration', 'Login System', 'Order Management', 'Cook Profiles', 'Menu Listing'],
   },
   {
-    id: 5,
-    title: 'Speech to Text',
-    shortDesc: 'Convert spoken language into accurate written text',
-    fullDesc: `An application that converts spoken language into written text using speech recognition APIs
-    and ML models. Designed to improve accessibility and productivity with reliable transcription.`,
-    tech: ['Python', 'Speech Recognition', 'Flutter'],
-    color: 'from-indigo-500 to-purple-500',
-    icon: '🎙️',
-    github: 'https://github.com/diya2405',
+    id: 7,
+    title: 'Telemedicine Chatbot',
+    shortDesc: 'AI-powered chatbot for telemedicine and health consultation',
+    fullDesc: `A telemedicine chatbot built to provide preliminary health consultation and guidance.
+    It uses conversational AI to interact with users, understand symptoms, and suggest
+    possible next steps for medical care.`,
+    tech: ['HTML', 'CSS', 'JavaScript', 'AI APIs'],
+    color: 'from-teal-500 to-cyan-500',
+    icon: '🏥',
+    github: 'https://github.com/diya2405/Chatbot',
     demo: null,
-    features: ['Live Transcription', 'Multi-language Support', 'Noise Handling', 'Simple UI', 'Export Options'],
+    features: ['Symptom Analysis', 'Health Guidance', 'Conversational UI', 'Responsive Design', 'Quick Response'],
+  },
+  {
+    id: 8,
+    title: 'LangTrans – Language Translator',
+    shortDesc: 'Python-based language translation tool for multilingual text conversion',
+    fullDesc: `LangTrans is a Python-based language translation application that converts text between
+    multiple languages. It leverages translation APIs to provide accurate and fast translations
+    with a simple, user-friendly interface.`,
+    tech: ['Python', 'NLP', 'Translation APIs'],
+    color: 'from-rose-500 to-pink-500',
+    icon: '🌍',
+    github: 'https://github.com/diya2405/LangTrans',
+    demo: null,
+    features: ['Multi-language Support', 'Fast Translation', 'Simple Interface', 'Text Processing', 'API Integration'],
+  },
+  {
+    id: 9,
+    title: 'Traffic Simulation',
+    shortDesc: 'Python simulation for modeling and analyzing traffic flow patterns',
+    fullDesc: `A Python-based traffic simulation project that models traffic flow patterns and scenarios.
+    It provides visualization of traffic movements and helps analyze congestion points
+    and traffic management strategies.`,
+    tech: ['Python', 'Simulation', 'Data Visualization'],
+    color: 'from-red-500 to-orange-500',
+    icon: '🚗',
+    github: 'https://github.com/diya2405/Traffic_Simulation',
+    demo: null,
+    features: ['Traffic Modeling', 'Flow Simulation', 'Visualization', 'Pattern Analysis', 'Scenario Testing'],
+  },
+  {
+    id: 10,
+    title: 'Travel Booking System',
+    shortDesc: 'Web platform for easy travel package booking and management',
+    fullDesc: `A travel booking platform that allows easy travel package booking. Users can browse
+    available packages, select their preferences, and manage their bookings through
+    an intuitive web interface.`,
+    tech: ['HTML', 'CSS', 'JavaScript'],
+    color: 'from-sky-500 to-blue-500',
+    icon: '✈️',
+    github: 'https://github.com/diya2405/Trvel-Booking-System',
+    demo: null,
+    features: ['Package Browsing', 'Booking Management', 'User Interface', 'Travel Info', 'Responsive Layout'],
   },
 ];
 
@@ -224,11 +296,11 @@ export default function Projects() {
             Featured <span className="gradient-text">Projects</span>
           </h2>
           <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-            A featured selection from 15+ academic projects. Click any card to see more details.
+            A featured selection from 20+ projects across mobile, web, AI/ML, and full-stack development. Click any card to see more details.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} isInView={isInView} />
           ))}

@@ -64,12 +64,13 @@ export default function About() {
             <p className="text-gray-400 leading-relaxed mb-6">
               Passionate IT Engineering student at CSPIT, CHARUSAT University, building solutions with Flutter & Firebase
               and experimenting with AI/ML. I enjoy applying analytical skills to solve real-world problems through
-              impactful applications.
+              impactful applications across mobile, web, and intelligent systems.
             </p>
             <p className="text-gray-400 leading-relaxed mb-8">
-              Currently working on Flutter-based AI applications while exploring speech recognition, face recognition,
-              and sentiment analysis. I&apos;ve built 15+ academic projects and earned a DDCET Rank 58 with a Diploma
-              CGPA of 9.46.
+              Currently working on Flutter-based AI applications, React web platforms, and exploring full-stack
+              development. I&apos;ve built 20+ projects spanning mobile apps, web platforms, AI/ML systems, and
+              automation tools. Earned a DDCET Rank 58 with a Diploma CGPA of 9.46 and hold 10+ certifications
+              in Java, Cyber Security, DSA, JavaScript, and more.
             </p>
 
             <div className="grid grid-cols-2 gap-4">
