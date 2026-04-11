@@ -1,4 +1,4 @@
-import { useEffect, useRef, useMemo } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { FiGithub, FiLinkedin, FiMail, FiDownload, FiArrowRight, FiTerminal } from 'react-icons/fi';
@@ -66,23 +66,20 @@ function MatrixRain() {
   );
 }
 
-function ParticleField() {
-  const particles = useMemo(
-    () =>
-      Array.from({ length: 40 }, (_, i) => ({
-        id: i,
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        size: Math.random() * 3 + 1,
-        duration: Math.random() * 20 + 15,
-        delay: Math.random() * 5,
-      })),
-    []
-  );
+// Pre-computed particle positions (stable across renders)
+const PARTICLES = Array.from({ length: 40 }, (_, i) => ({
+  id: i,
+  x: ((i * 37 + 13) % 100),
+  y: ((i * 53 + 7) % 100),
+  size: (i % 3) + 1,
+  duration: 15 + (i % 10) * 2,
+  delay: (i % 8) * 0.6,
+}));
 
+function ParticleField() {
   return (
     <div className="absolute inset-0 overflow-hidden">
-      {particles.map((p) => (
+      {PARTICLES.map((p) => (
         <motion.div
           key={p.id}
           className="absolute rounded-full bg-blue-400/30"

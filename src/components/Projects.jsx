@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { FiGithub, FiExternalLink, FiX } from 'react-icons/fi';
+import { FiGithub, FiExternalLink, FiX, FiFilter } from 'react-icons/fi';
+import { useTheme } from '../context/ThemeContext';
 
 const projects = [
   {
@@ -11,6 +12,7 @@ const projects = [
     It supports candidate profiles, recruiter postings, and real-time updates, helping connect applicants with
     the right opportunities. The app focuses on a smooth experience for both candidates and recruiters.`,
     tech: ['Flutter', 'Firebase', 'Dart'],
+    category: 'mobile',
     color: 'from-blue-500 to-cyan-500',
     icon: '🚀',
     github: 'https://github.com/diya2405/JobFlow',
@@ -25,6 +27,7 @@ const projects = [
     for real-time user interaction. Features include AI chatbot, image generation from text prompts,
     and language translation in a clean, responsive mobile UI.`,
     tech: ['Flutter', 'Dart', 'AI/ML APIs', 'Firebase'],
+    category: 'ai',
     color: 'from-purple-500 to-pink-500',
     icon: '🤖',
     github: 'https://github.com/diya2405/Ai_Assistant',
@@ -39,6 +42,7 @@ const projects = [
     and engaging. It features competitive coding challenges, gamified learning experiences,
     skill-based progress tracking, and interactive coding competitions.`,
     tech: ['React', 'JavaScript', 'CSS', 'Vite'],
+    category: 'web',
     color: 'from-indigo-500 to-blue-500',
     icon: '💻',
     github: 'https://github.com/diya2405/CodeQuest',
@@ -53,6 +57,7 @@ const projects = [
     to explore and read verses from sacred texts. It features a clean, accessible interface
     with search and navigation capabilities.`,
     tech: ['JavaScript', 'HTML', 'CSS'],
+    category: 'web',
     color: 'from-amber-500 to-orange-500',
     icon: '📜',
     github: 'https://github.com/diya2405/VedaVerses',
@@ -66,6 +71,7 @@ const projects = [
     fullDesc: `A Python-based sentiment analysis project that classifies user reviews and social media text
     into positive, negative, or neutral sentiments using NLP techniques and ML models.`,
     tech: ['Python', 'NLP', 'scikit-learn', 'TensorFlow'],
+    category: 'ai',
     color: 'from-green-500 to-emerald-500',
     icon: '🧠',
     github: 'https://github.com/diya2405',
@@ -80,6 +86,7 @@ const projects = [
     login, and access tiffin services. This project simulates a basic food ordering system
     for homemade tiffin services, connecting home cooks to working professionals.`,
     tech: ['PHP', 'MySQL', 'HTML', 'CSS'],
+    category: 'web',
     color: 'from-yellow-500 to-amber-500',
     icon: '🍱',
     github: 'https://github.com/diya2405/home-tiffine-portal',
@@ -94,6 +101,7 @@ const projects = [
     It uses conversational AI to interact with users, understand symptoms, and suggest
     possible next steps for medical care.`,
     tech: ['HTML', 'CSS', 'JavaScript', 'AI APIs'],
+    category: 'ai',
     color: 'from-teal-500 to-cyan-500',
     icon: '🏥',
     github: 'https://github.com/diya2405/Chatbot',
@@ -108,6 +116,7 @@ const projects = [
     multiple languages. It leverages translation APIs to provide accurate and fast translations
     with a simple, user-friendly interface.`,
     tech: ['Python', 'NLP', 'Translation APIs'],
+    category: 'ai',
     color: 'from-rose-500 to-pink-500',
     icon: '🌍',
     github: 'https://github.com/diya2405/LangTrans',
@@ -122,6 +131,7 @@ const projects = [
     It provides visualization of traffic movements and helps analyze congestion points
     and traffic management strategies.`,
     tech: ['Python', 'Simulation', 'Data Visualization'],
+    category: 'ai',
     color: 'from-red-500 to-orange-500',
     icon: '🚗',
     github: 'https://github.com/diya2405/Traffic_Simulation',
@@ -136,6 +146,7 @@ const projects = [
     available packages, select their preferences, and manage their bookings through
     an intuitive web interface.`,
     tech: ['HTML', 'CSS', 'JavaScript'],
+    category: 'web',
     color: 'from-sky-500 to-blue-500',
     icon: '✈️',
     github: 'https://github.com/diya2405/Trvel-Booking-System',
@@ -144,7 +155,14 @@ const projects = [
   },
 ];
 
-function ProjectModal({ project, onClose }) {
+const filterTabs = [
+  { label: 'All', value: 'all' },
+  { label: 'Mobile', value: 'mobile' },
+  { label: 'Web', value: 'web' },
+  { label: 'AI/ML', value: 'ai' },
+];
+
+function ProjectModal({ project, onClose, darkMode }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -158,35 +176,64 @@ function ProjectModal({ project, onClose }) {
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.9, y: 20 }}
         onClick={(e) => e.stopPropagation()}
-        className="relative bg-gray-900 border border-gray-700 rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+        className={`relative rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto border ${
+          darkMode
+            ? 'bg-hacker-950 border-hacker-500/30 shadow-[0_0_30px_rgba(0,255,65,0.1)]'
+            : 'bg-white border-gray-200 shadow-2xl'
+        }`}
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+          className={`absolute top-4 right-4 transition-colors ${
+            darkMode ? 'text-gray-400 hover:text-hacker-500' : 'text-gray-400 hover:text-gray-900'
+          }`}
+          aria-label="Close modal"
         >
           <FiX size={24} />
         </button>
 
         <div className="text-5xl mb-4">{project.icon}</div>
-        <h3 className={`text-2xl font-bold mb-2 bg-gradient-to-r ${project.color} bg-clip-text text-transparent`}>
-          {project.title}
+        <h3 className={`text-2xl font-bold mb-2 ${darkMode ? 'font-mono' : ''}`}>
+          <span className={`bg-gradient-to-r bg-clip-text text-transparent ${
+            darkMode ? 'from-hacker-500 to-emerald-400' : project.color
+          }`}>
+            {project.title}
+          </span>
         </h3>
-        <p className="text-gray-400 leading-relaxed mb-6">{project.fullDesc}</p>
+        <p className={`leading-relaxed mb-6 ${
+          darkMode ? 'text-gray-400' : 'text-gray-600'
+        }`}>{project.fullDesc}</p>
 
-        <h4 className="text-white font-semibold mb-3">Key Features</h4>
+        <h4 className={`font-semibold mb-3 ${
+          darkMode ? 'text-gray-200 font-mono' : 'text-gray-900'
+        }`}>
+          {darkMode ? '> Key Features' : 'Key Features'}
+        </h4>
         <ul className="space-y-2 mb-6">
           {project.features.map((feature) => (
-            <li key={feature} className="flex items-center gap-2 text-gray-400 text-sm">
-              <span className="w-1.5 h-1.5 bg-blue-500 rounded-full flex-shrink-0" />
+            <li key={feature} className={`flex items-center gap-2 text-sm ${
+              darkMode ? 'text-gray-400' : 'text-gray-600'
+            }`}>
+              <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${
+                darkMode ? 'bg-hacker-500 shadow-[0_0_4px_#00ff41]' : 'bg-blue-500'
+              }`} />
               {feature}
             </li>
           ))}
         </ul>
 
-        <h4 className="text-white font-semibold mb-3">Tech Stack</h4>
+        <h4 className={`font-semibold mb-3 ${
+          darkMode ? 'text-gray-200 font-mono' : 'text-gray-900'
+        }`}>
+          {darkMode ? '> Tech Stack' : 'Tech Stack'}
+        </h4>
         <div className="flex flex-wrap gap-2 mb-6">
           {project.tech.map((tech) => (
-            <span key={tech} className="px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-sm border border-gray-700">
+            <span key={tech} className={`px-3 py-1 rounded-full text-sm border ${
+              darkMode
+                ? 'bg-hacker-900/50 text-hacker-400 border-hacker-500/30 font-mono'
+                : 'bg-gray-100 text-gray-700 border-gray-200'
+            }`}>
               {tech}
             </span>
           ))}
@@ -197,7 +244,11 @@ function ProjectModal({ project, onClose }) {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-5 py-2.5 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors text-sm font-medium"
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-lg transition-colors text-sm font-medium ${
+              darkMode
+                ? 'bg-hacker-900/50 border border-hacker-500/30 text-hacker-400 hover:bg-hacker-500/20 font-mono'
+                : 'bg-gray-100 hover:bg-gray-200 text-gray-800'
+            }`}
           >
             <FiGithub /> GitHub
           </a>
@@ -206,7 +257,9 @@ function ProjectModal({ project, onClose }) {
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r ${project.color} text-white rounded-lg transition-opacity hover:opacity-90 text-sm font-medium`}
+              className={`flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r text-white rounded-lg transition-opacity hover:opacity-90 text-sm font-medium ${
+                darkMode ? 'from-hacker-500 to-emerald-500' : project.color
+              }`}
             >
               <FiExternalLink /> Live Demo
             </a>
@@ -217,7 +270,7 @@ function ProjectModal({ project, onClose }) {
   );
 }
 
-function ProjectCard({ project, index, isInView }) {
+function ProjectCard({ project, index, isInView, darkMode }) {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
@@ -225,29 +278,53 @@ function ProjectCard({ project, index, isInView }) {
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6, delay: index * 0.15 }}
-        whileHover={{ y: -10, scale: 1.02 }}
-        className="glass border border-gray-700/50 hover:border-blue-500/30 rounded-2xl p-6 cursor-pointer group transition-all"
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        whileHover={{ y: -8, scale: 1.02 }}
+        className={`border rounded-2xl p-6 cursor-pointer group transition-all backdrop-blur-sm ${
+          darkMode
+            ? 'bg-hacker-900/30 border-hacker-500/20 hover:border-hacker-500/50 hover:shadow-[0_0_25px_rgba(0,255,65,0.12)]'
+            : 'bg-white border-gray-200 hover:border-blue-300 hover:shadow-xl'
+        }`}
         onClick={() => setModalOpen(true)}
       >
         <div className="text-4xl mb-4">{project.icon}</div>
-        <div className={`text-xs font-semibold uppercase tracking-widest bg-gradient-to-r ${project.color} bg-clip-text text-transparent mb-2`}>
-          Project {String(index + 1).padStart(2, '0')}
+        <div className={`text-xs font-semibold uppercase tracking-widest mb-2 ${
+          darkMode ? 'text-hacker-500 font-mono' : ''
+        }`}>
+          <span className={`bg-gradient-to-r bg-clip-text text-transparent ${
+            darkMode ? 'from-hacker-500 to-emerald-400' : project.color
+          }`}>
+            {darkMode ? `// Project ${String(index + 1).padStart(2, '0')}` : `Project ${String(index + 1).padStart(2, '0')}`}
+          </span>
         </div>
-        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors">
+        <h3 className={`text-xl font-bold mb-3 transition-colors ${
+          darkMode
+            ? 'text-gray-200 group-hover:text-hacker-400'
+            : 'text-gray-900 group-hover:text-blue-600'
+        }`}>
           {project.title}
         </h3>
-        <p className="text-gray-400 text-sm leading-relaxed mb-4">{project.shortDesc}</p>
+        <p className={`text-sm leading-relaxed mb-4 ${
+          darkMode ? 'text-gray-400' : 'text-gray-600'
+        }`}>{project.shortDesc}</p>
 
         <div className="flex flex-wrap gap-2 mb-4">
           {project.tech.slice(0, 3).map((tech) => (
-            <span key={tech} className="px-2 py-1 text-xs rounded-md bg-gray-800 text-gray-400 border border-gray-700">
+            <span key={tech} className={`px-2 py-1 text-xs rounded-md border ${
+              darkMode
+                ? 'bg-hacker-900/50 text-hacker-400/80 border-hacker-500/20 font-mono'
+                : 'bg-gray-50 text-gray-600 border-gray-200'
+            }`}>
               {tech}
             </span>
           ))}
           {project.tech.length > 3 && (
-            <span className="px-2 py-1 text-xs rounded-md bg-gray-800 text-gray-400 border border-gray-700">
-              +{project.tech.length - 3} more
+            <span className={`px-2 py-1 text-xs rounded-md border ${
+              darkMode
+                ? 'bg-hacker-900/50 text-gray-500 border-hacker-500/20 font-mono'
+                : 'bg-gray-50 text-gray-500 border-gray-200'
+            }`}>
+              +{project.tech.length - 3}
             </span>
           )}
         </div>
@@ -255,7 +332,11 @@ function ProjectCard({ project, index, isInView }) {
         <div className="flex gap-3">
           <button
             onClick={(e) => { e.stopPropagation(); setModalOpen(true); }}
-            className={`flex-1 py-2 text-sm font-medium rounded-lg bg-gradient-to-r ${project.color} text-white opacity-90 hover:opacity-100 transition-opacity`}
+            className={`flex-1 py-2 text-sm font-medium rounded-lg transition-all ${
+              darkMode
+                ? 'bg-hacker-500/20 border border-hacker-500/40 text-hacker-500 hover:bg-hacker-500/30 font-mono'
+                : `bg-gradient-to-r ${project.color} text-white opacity-90 hover:opacity-100`
+            }`}
           >
             View Details
           </button>
@@ -264,7 +345,12 @@ function ProjectCard({ project, index, isInView }) {
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
-            className="p-2 rounded-lg bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700 transition-colors"
+            className={`p-2 rounded-lg transition-colors ${
+              darkMode
+                ? 'bg-hacker-900/50 text-gray-400 hover:text-hacker-500 hover:bg-hacker-500/10'
+                : 'bg-gray-100 text-gray-500 hover:text-gray-900 hover:bg-gray-200'
+            }`}
+            aria-label="View on GitHub"
           >
             <FiGithub size={18} />
           </a>
@@ -272,7 +358,7 @@ function ProjectCard({ project, index, isInView }) {
       </motion.div>
 
       <AnimatePresence>
-        {modalOpen && <ProjectModal project={project} onClose={() => setModalOpen(false)} />}
+        {modalOpen && <ProjectModal project={project} onClose={() => setModalOpen(false)} darkMode={darkMode} />}
       </AnimatePresence>
     </>
   );
@@ -281,30 +367,88 @@ function ProjectCard({ project, index, isInView }) {
 export default function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const { darkMode } = useTheme();
+  const [activeFilter, setActiveFilter] = useState('all');
+
+  const filteredProjects = activeFilter === 'all'
+    ? projects
+    : projects.filter((p) => p.category === activeFilter);
 
   return (
-    <section id="projects" className="section-padding bg-gray-900" ref={ref}>
+    <section
+      id="projects"
+      className={`section-padding ${
+        darkMode ? 'bg-hacker-900/30' : 'bg-gray-50'
+      }`}
+      ref={ref}
+    >
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <span className="text-blue-400 font-semibold text-sm uppercase tracking-widest">Portfolio</span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mt-2">
+          <span className={`font-semibold text-sm uppercase tracking-widest ${
+            darkMode ? 'text-hacker-500 font-mono' : 'text-blue-500'
+          }`}>
+            {darkMode ? '// Portfolio' : 'Portfolio'}
+          </span>
+          <h2 className={`text-4xl sm:text-5xl font-bold mt-2 ${
+            darkMode ? 'text-gray-100' : 'text-gray-900'
+          }`}>
             Featured <span className="gradient-text">Projects</span>
           </h2>
-          <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
+          <p className={`mt-4 max-w-2xl mx-auto ${
+            darkMode ? 'text-gray-400' : 'text-gray-600'
+          }`}>
             A featured selection from 20+ projects across mobile, web, AI/ML, and full-stack development. Click any card to see more details.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} isInView={isInView} />
+        {/* Filter Tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex justify-center gap-2 mb-12 flex-wrap"
+        >
+          {filterTabs.map((tab) => (
+            <motion.button
+              key={tab.value}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setActiveFilter(tab.value)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-1.5 ${
+                activeFilter === tab.value
+                  ? darkMode
+                    ? 'bg-hacker-500/20 border border-hacker-500 text-hacker-500 shadow-[0_0_15px_rgba(0,255,65,0.2)] font-mono'
+                    : 'bg-blue-500 text-white shadow-lg shadow-blue-500/25'
+                  : darkMode
+                    ? 'bg-hacker-900/30 border border-hacker-500/20 text-gray-400 hover:text-hacker-400 hover:border-hacker-500/40 font-mono'
+                    : 'bg-white border border-gray-200 text-gray-600 hover:border-blue-300 hover:text-blue-500'
+              }`}
+            >
+              {activeFilter === tab.value && <FiFilter size={12} />}
+              {tab.label}
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
+
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeFilter}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {filteredProjects.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} isInView={isInView} darkMode={darkMode} />
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
