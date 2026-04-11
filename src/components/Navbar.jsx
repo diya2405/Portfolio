@@ -13,6 +13,8 @@ const navLinks = [
   { name: 'Contact', href: '#contact' },
 ];
 
+const sectionIds = navLinks.map((l) => l.href.replace('#', ''));
+
 export default function Navbar() {
   const { darkMode, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
@@ -24,11 +26,10 @@ export default function Navbar() {
       setScrolled(window.scrollY > 50);
 
       // Track active section
-      const sections = navLinks.map((l) => l.href.replace('#', ''));
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sectionIds[i]);
         if (el && el.getBoundingClientRect().top <= 120) {
-          setActiveSection(sections[i]);
+          setActiveSection(sectionIds[i]);
           break;
         }
       }

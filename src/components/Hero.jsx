@@ -11,7 +11,7 @@ function MatrixRain() {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    let animationId;
+    let animationId = null;
 
     const resize = () => {
       canvas.width = window.innerWidth;

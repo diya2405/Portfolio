@@ -324,7 +324,7 @@ function ProjectCard({ project, index, isInView, darkMode }) {
                 ? 'bg-hacker-900/50 text-gray-500 border-hacker-500/20 font-mono'
                 : 'bg-gray-50 text-gray-500 border-gray-200'
             }`}>
-              +{project.tech.length - 3}
+              +{project.tech.length - 3} more
             </span>
           )}
         </div>

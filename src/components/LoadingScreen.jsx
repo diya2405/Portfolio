@@ -17,16 +17,23 @@ export default function LoadingScreen({ onComplete }) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    let stopped = false;
     const lineInterval = setInterval(() => {
       setCurrentLine((prev) => {
         if (prev >= hackerLines.length - 1) {
-          clearInterval(lineInterval);
+          if (!stopped) {
+            stopped = true;
+            clearInterval(lineInterval);
+          }
           return prev;
         }
         return prev + 1;
       });
     }, 250);
-    return () => clearInterval(lineInterval);
+    return () => {
+      stopped = true;
+      clearInterval(lineInterval);
+    };
   }, []);
 
   useEffect(() => {
