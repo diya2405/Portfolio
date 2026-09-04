@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diya Shah | Mobile Systems &amp; Security Engineer</title>
+  
+  <!-- SEO & Social Graph Meta Tags -->
+  <meta name="description" content="Portfolio of Diya Shah — Mobile Systems Engineer, App Security Analyst, and Flutter Architect. Explore flagship projects in binary SAST, AI recruitment, and cross-platform apps." />
+  <meta name="keywords" content="Diya Shah, Flutter Developer, Mobile Security, Android SAST, Firebase, OWASP Mobile, AI Integration, Portfolio" />
+  <meta name="author" content="Diya Shah" />
+  
+  <meta property="og:title" content="Diya Shah | Mobile Systems &amp; Security Engineer" />
+  <meta property="og:description" content="Crafting high-performance Flutter mobile systems and Android binary security analyzers. Explore flagship projects, skills, and academic milestones." />
+  <meta property="og:image" content="diya_avatar.jpg" />
+  <meta property="og:type" content="website" />
+  
+  <!-- Modern Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Ambient Aurora Glow Orbs -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- Dynamic Header / Floating Glass Navbar -->
+  <header class="navbar-wrapper">
+    <nav class="navbar glass-panel">
+      <a href="#hero" class="brand-logo">
+        <span class="logo-bracket">&lt;</span>DS<span class="logo-slash">/</span><span class="logo-bracket">&gt;</span>
+        <span class="brand-name">Diya Shah</span>
+      </a>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#certificates" class="nav-link">Certificates</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="https://github.com/diya2405" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/diya-shah-85ba49308/" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a href="#contact" class="btn btn-primary btn-sm">
+          <span>Let's Connect</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        
+        <!-- Left Content -->
+        <div class="hero-content">
+          <div class="status-badge glass-panel">
+            <span class="status-dot"></span>
+            <span>Open to Software &amp; Mobile Internships</span>
+          </div>
+
+          <h1 class="hero-title">
+            Engineering <span class="gradient-text">Fluid Mobile Systems</span> &amp; Byte-Level Security.
+          </h1>
+
+          <div class="typed-wrapper">
+            <span class="typed-prefix">Specializing in</span>
+            <span class="typed-text" id="typedText">Flutter Architecture</span>
+            <span class="typed-cursor">|</span>
+          </div>
+
+          <p class="hero-subtitle">
+            B.Tech IT engineer fusing high-performance <strong>Flutter &amp; Dart</strong> mobile applications with low-level <strong>Android Binary SAST security analysis</strong> and intelligent <strong>AI microservices</strong>.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-primary">
+              <i class="fa-solid fa-layer-group"></i>
+              <span>Explore Flagship Projects</span>
+            </a>
+            <button class="btn btn-glass" id="heroPlayAvatarBtn">
+              <i class="fa-solid fa-play"></i>
+              <span>Listen to AI Intro</span>
+            </button>
+            <button class="btn btn-outline" onclick="downloadResume()">
+              <i class="fa-solid fa-file-arrow-down"></i>
+              <span>Resume</span>
+            </button>
+          </div>
+
+          <!-- Telemetry Metric Pills -->
+          <div class="hero-telemetry">
+            <div class="telemetry-item">
+              <span class="telemetry-value">9.46</span>
+              <span class="telemetry-label">Diploma CGPA (Top 1%)</span>
+            </div>
+            <div class="telemetry-divider"></div>
+            <div class="telemetry-item">
+              <span class="telemetry-value">Rank 58</span>
+              <span class="telemetry-label">Gujarat State DDCET</span>
+            </div>
+            <div class="telemetry-divider"></div>
+            <div class="telemetry-item">
+              <span class="telemetry-value">37+</span>
+              <span class="telemetry-label">GitHub Repositories</span>
+            </div>
+            <div class="telemetry-divider"></div>
+            <div class="telemetry-item">
+              <span class="telemetry-value">3.8s</span>
+              <span class="telemetry-label">Zero-JVM SAST Scan</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right AI Avatar Showcase Card -->
+        <div class="hero-avatar-area">
+          <div class="avatar-card glass-panel">
+            <div class="avatar-badge">
+              <span class="ai-sparkle"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+              <span>Interactive AI Voice Intro</span>
+            </div>
+
+            <div class="avatar-frame">
+              <img src="diya_avatar.jpg" alt="Diya Shah - Professional Studio Avatar" class="avatar-img" id="avatarImage" />
+              <div class="avatar-glow-ring"></div>
+
+              <!-- Animated Waveform Equalizer -->
+              <div class="avatar-equalizer" id="equalizer">
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+              </div>
+
+              <!-- Playback Overlay Button -->
+              <button class="avatar-play-overlay" id="avatarToggleBtn" aria-label="Toggle AI Intro">
+                <i class="fa-solid fa-play" id="playIcon"></i>
+              </button>
+            </div>
+
+            <!-- Interactive Voice Transcript / Subtitles -->
+            <div class="avatar-speech-box">
+              <div class="speech-header">
+                <span class="speech-speaker"><i class="fa-solid fa-volume-high"></i> Diya's Voice Agent:</span>
+                <span class="speech-status" id="voiceStatus">Click to play introduction</span>
+              </div>
+              <p class="speech-text" id="captionText">
+                "Hi, I'm Diya Shah! I specialize in crafting fluid Flutter mobile experiences, analyzing Android APK binaries at the byte level for OWASP vulnerabilities, and building intelligent AI-driven applications."
+              </p>
+            </div>
+
+            <div class="avatar-footer-actions">
+              <button class="sub-btn" id="voiceToggleVoice"><i class="fa-solid fa-rotate-left"></i> Replay</button>
+              <button class="sub-btn" id="voiceMuteToggle"><i class="fa-solid fa-volume-xmark"></i> Mute</button>
+              <a href="https://github.com/diya2405" target="_blank" rel="noopener noreferrer" class="sub-btn"><i class="fa-brands fa-github"></i> @diya2405</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT & BENTO GRID SECTION ==================== -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <span class="section-tag"><i class="fa-solid fa-terminal"></i> System Overview</span>
+          <h2 class="section-title">Architectural Mindset &amp; Credentials</h2>
+          <p class="section-description">
+            Combining deterministic computer science fundamentals, low-level binary analysis, and modern user-centric design.
+          </p>
+        </div>
+
+        <div class="bento-grid">
+          
+          <!-- Bento Card 1: Core Focus -->
+          <div class="bento-card bento-span-2 glass-panel">
+            <div class="card-icon-bubble"><i class="fa-solid fa-mobile-screen-button"></i></div>
+            <h3>Cross-Platform Mobile &amp; App Security</h3>
+            <p>
+              I build enterprise-grade mobile applications with <strong>Flutter &amp; Dart</strong>, focusing on 60fps smooth animations, decoupled BLoC/Provider state architecture, and offline-first Firebase synchronization. Simultaneously, I research <strong>Android App Security</strong>, developing custom Python engines that parse compiled Dalvik bytecode and binary manifests directly to catch vulnerabilities before release.
+            </p>
+            <div class="tech-pills">
+              <span class="pill">Flutter 3.x</span>
+              <span class="pill">Dart</span>
+              <span class="pill">Android AXML/DEX</span>
+              <span class="pill">OWASP MASVS</span>
+              <span class="pill">Firebase Cloud</span>
+            </div>
+          </div>
+
+          <!-- Bento Card 2: Interactive Terminal -->
+          <div class="bento-card bento-terminal glass-panel">
+            <div class="terminal-bar">
+              <div class="term-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="term-title">system_diagnostics.json</span>
+              <button class="term-copy" id="copyDiagnosticsBtn" title="Copy JSON"><i class="fa-regular fa-copy"></i></button>
+            </div>
+            <pre class="terminal-code"><code>{
+  <span class="key">"engineer"</span>: <span class="str">"Diya Shah"</span>,
+  <span class="key">"domain"</span>: <span class="str">"Mobile Systems &amp; Security"</span>,
+  <span class="key">"status"</span>: <span class="str">"Open to Internships"</span>,
+  <span class="key">"metrics"</span>: {
+    <span class="key">"diploma_cgpa"</span>: <span class="num">9.46</span>,
+    <span class="key">"ddcet_rank"</span>: <span class="num">58</span>,
+    <span class="key">"public_repos"</span>: <span class="num">37</span>
+  },
+  <span class="key">"passions"</span>: [
+    <span class="str">"Binary SAST &amp; SBOM"</span>,
+    <span class="str">"Reactive Flutter UIs"</span>,
+    <span class="str">"AI Microservices"</span>
+  ]
+}</code></pre>
+          </div>
+
+          <!-- Bento Card 3: Academic Excellence -->
+          <div class="bento-card glass-panel">
+            <div class="card-icon-bubble"><i class="fa-solid fa-graduation-cap"></i></div>
+            <h3>Academic Milestones</h3>
+            <ul class="milestone-list">
+              <li>
+                <div class="m-point"></div>
+                <div>
+                  <strong>B.Tech in Information Technology</strong>
+                  <span>Charusat University (2024 - 2027)</span>
+                </div>
+              </li>
+              <li>
+                <div class="m-point"></div>
+                <div>
+                  <strong>Diploma in Information Technology</strong>
+                  <span>Government Polytechnic • <span class="accent-highlight">9.46 CGPA</span></span>
+                </div>
+              </li>
+              <li>
+                <div class="m-point"></div>
+                <div>
+                  <strong>DDCET Gujarat State Rank 58</strong>
+                  <span>Top percentile entrance rank across state candidates</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Bento Card 4: DevSecOps & Security Rigor -->
+          <div class="bento-card bento-span-2 glass-panel">
+            <div class="card-icon-bubble"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3>DevSecOps &amp; Software Bill of Materials (SBOM)</h3>
+            <p>
+              Dedicated to securing mobile supply chains. Creator of a standalone, zero-JVM Static Application Security Testing scanner for Android APKs that flags exported intents, insecure cryptographic patterns, and generates CycloneDX 1.5 SBOM reports in under 4 seconds.
+            </p>
+            <div class="feature-badges">
+              <span class="f-badge"><i class="fa-solid fa-bolt"></i> 3-6s Execution</span>
+              <span class="f-badge"><i class="fa-solid fa-check"></i> OWASP Mobile Top 10 (2024)</span>
+              <span class="f-badge"><i class="fa-solid fa-file-code"></i> CycloneDX 1.5 JSON</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SKILLS & TECH ARSENAL SECTION ==================== -->
+    <section class="section skills-section" id="skills">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <span class="section-tag"><i class="fa-solid fa-microchip"></i> Arsenal</span>
+          <h2 class="section-title">Precision Technical Stack</h2>
+          <p class="section-description">
+            Hands-on technologies and frameworks I actively design, architect, and build with.
+          </p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="skills-filter-tabs">
+          <button class="filter-tab active" data-filter="all">All Disciplines</button>
+          <button class="filter-tab" data-filter="mobile">Mobile Systems</button>
+          <button class="filter-tab" data-filter="security">Security &amp; SAST</button>
+          <button class="filter-tab" data-filter="backend">Cloud &amp; Backend</button>
+          <button class="filter-tab" data-filter="ai">AI &amp; Tooling</button>
+        </div>
+
+        <!-- Skills Grid -->
+        <div class="skills-grid" id="skillsGrid">
+          
+          <!-- Mobile -->
+          <div class="skill-card glass-panel" data-cat="mobile">
+            <div class="skill-header">
+              <i class="fa-brands fa-flutter skill-icon flutter-color"></i>
+              <div class="skill-meta">
+                <h4>Flutter</h4>
+                <span class="skill-level high">Advanced</span>
+              </div>
+            </div>
+            <p>Cross-platform mobile apps, reactive state management (BLoC/Provider), custom canvas &amp; 60fps animations.</p>
+            <div class="skill-bar"><div class="skill-progress" style="width: 92%;"></div></div>
+          </div>
+
+          <div class="skill-card glass-panel" data-cat="mobile">
+            <div class="skill-header">
+              <i class="fa-solid fa-code skill-icon dart-color"></i>
+              <div class="skill-meta">
+                <h4>Dart</h4>
+                <span class="skill-level high">Advanced</span>
+              </div>
+            </div>
+            <p>Asynchronous streams, null safety, OOP architecture, isolate threads, and native platform channels.</p>
+            <div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div>
+          </div>
+
+          <!-- Security -->
+          <div class="skill-card glass-panel" data-cat="security">
+            <div class="skill-header">
+              <i class="fa-brands fa-python skill-icon python-color"></i>
+              <div class="skill-meta">
+                <h4>Python (Binary Analysis)</h4>
+                <span class="skill-level high">Advanced</span>
+              </div>
+            </div>
+            <p>Bytecode deserialization of Android Manifest (AXML) &amp; Dalvik DEX, static taint checking, and security tooling.</p>
+            <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+          </div>
+
+          <div class="skill-card glass-panel" data-cat="security">
+            <div class="skill-header">
+              <i class="fa-solid fa-shield-virus skill-icon sec-color"></i>
+              <div class="skill-meta">
+                <h4>OWASP Mobile Security</h4>
+                <span class="skill-level mid">Proficient</span>
+              </div>
+            </div>
+            <p>Mapping binary vulnerabilities to OWASP Mobile Top 10 (2024), MASVS v2.0, and generating CycloneDX SBOMs.</p>
+            <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
+          </div>
+
+          <!-- Backend & Cloud -->
+          <div class="skill-card glass-panel" data-cat="backend">
+            <div class="skill-header">
+              <i class="fa-solid fa-fire-flame-curved skill-icon firebase-color"></i>
+              <div class="skill-meta">
+                <h4>Firebase Ecosystem</h4>
+                <span class="skill-level high">Advanced</span>
+              </div>
+            </div>
+            <p>Firebase Authentication, Cloud Firestore real-time listeners, Storage, Cloud Messaging, and Security Rules.</p>
+            <div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div>
+          </div>
+
+          <div class="skill-card glass-panel" data-cat="backend">
+            <div class="skill-header">
+              <i class="fa-brands fa-node-js skill-icon node-color"></i>
+              <div class="skill-meta">
+                <h4>Node.js &amp; Express APIs</h4>
+                <span class="skill-level mid">Proficient</span>
+              </div>
+            </div>
+            <p>RESTful API engineering, JWT authentication, request validation, middleware pipelines, and Postman test automation.</p>
+            <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
+          </div>
+
+          <div class="skill-card glass-panel" data-cat="backend">
+            <div class="skill-header">
+              <i class="fa-solid fa-database skill-icon sql-color"></i>
+              <div class="skill-meta">
+                <h4>SQL &amp; Relational DBs</h4>
+                <span class="skill-level mid">Proficient</span>
+              </div>
+            </div>
+            <p>MySQL, schema normalization, indexed queries, relational data integrity, and PHP full-stack integrations.</p>
+            <div class="skill-bar"><div class="skill-progress" style="width: 82%;"></div></div>
+          </div>
+
+          <!-- AI & Tooling -->
+          <div class="skill-card glass-panel" data-cat="ai">
+            <div class="skill-header">
+              <i class="fa-solid fa-brain skill-icon ai-color"></i>
+              <div class="skill-meta">
+                <h4>AI API Orchestration</h4>
+                <span class="skill-level mid">Proficient</span>
+              </div>
+            </div>
+            <p>Integrating Gemini/OpenAI models, resume parsing with Named Entity Recognition, and multimodal image synthesis.</p>
+            <div class="skill-bar"><div class="skill-progress" style="width: 84%;"></div></div>
+          </div>
+
+          <div class="skill-card glass-panel" data-cat="ai">
+            <div class="skill-header">
+              <i class="fa-brands fa-git-alt skill-icon git-color"></i>
+              <div class="skill-meta">
+                <h4>Git &amp; Dev Workflows</h4>
+                <span class="skill-level high">Advanced</span>
+              </div>
+            </div>
+            <p>GitHub version control, branching strategies, CI/CD pipeline automation, Android Studio, VS Code, and Postman.</p>
+            <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== FLAGSHIP PROJECTS SECTION ==================== -->
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <span class="section-tag"><i class="fa-solid fa-rocket"></i> Production Code</span>
+          <h2 class="section-title">Flagship Engineering Projects</h2>
+          <p class="section-description">
+            Real, open-source repositories showcasing end-to-end architecture, clean code, and zero fluff.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          
+          <!-- Project 1: APK Security Analyzer -->
+          <div class="project-card glass-panel">
+            <div class="project-banner">
+              <div class="project-badge sec-badge"><i class="fa-solid fa-shield-halved"></i> Security &amp; SAST</div>
+              <div class="project-preview-mockup">
+                <div class="mockup-header">
+                  <span class="m-dot red"></span><span class="m-dot yellow"></span><span class="m-dot green"></span>
+                  <span class="mockup-title">apk_vulnerability_analysis</span>
+                </div>
+                <div class="mockup-body">
+                  <code>$ python -m analyzer --target app.apk</code><br />
+                  <span class="green-text">[+] Zero-JVM AXML byte deserializer ... OK</span><br />
+                  <span class="green-text">[+] DEX Dalvik bytecode taint scan ... OK</span><br />
+                  <span class="blue-text">[+] CycloneDX 1.5 SBOM generated (3.82s)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="lang-tag"><i class="fa-brands fa-python"></i> Python</span>
+                <span class="stars-tag"><i class="fa-regular fa-clock"></i> 3.8s Scan</span>
+              </div>
+
+              <h3 class="project-title">Mobile App Security Analyzer (Zero-JVM SAST &amp; SBOM)</h3>
+              <p class="project-description">
+                A high-speed, zero-dependency Static Application Security Testing suite for Android APK binaries. Deserializes compiled AXML manifests and Dalvik DEX bytecode at the byte level, auditing against OWASP Mobile Top 10 (2024) and emitting CycloneDX 1.5 SBOMs.
+              </p>
+
+              <div class="project-tech-stack">
+                <span>Python 3</span>
+                <span>Bytecode Parsing</span>
+                <span>OWASP Mobile</span>
+                <span>CycloneDX SBOM</span>
+                <span>DevSecOps</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="https://github.com/diya2405/apk_vulnerability_analysis" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                  <i class="fa-brands fa-github"></i> Source Code
+                </a>
+                <button class="btn btn-glass btn-sm" onclick="openProjectModal('apk_analyzer')">
+                  <i class="fa-solid fa-circle-info"></i> Architecture
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: JobFlow AI Recruitment -->
+          <div class="project-card glass-panel">
+            <div class="project-banner">
+              <div class="project-badge flutter-badge"><i class="fa-brands fa-flutter"></i> Flutter &amp; AI</div>
+              <div class="project-preview-mockup">
+                <div class="mockup-header">
+                  <span class="m-dot red"></span><span class="m-dot yellow"></span><span class="m-dot green"></span>
+                  <span class="mockup-title">JobFlow Tri-Portal Ecosystem</span>
+                </div>
+                <div class="mockup-body">
+                  <code>JobSeeker ◄──► HR Enterprise ◄──► Admin</code><br />
+                  <span class="blue-text">[Sync] Realtime Firestore State Mesh</span><br />
+                  <span class="purple-text">[AI] Automated Resume NER &amp; Match Score</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="lang-tag"><i class="fa-solid fa-code"></i> Flutter / Dart</span>
+                <span class="stars-tag"><i class="fa-solid fa-fire"></i> Firebase Realtime</span>
+              </div>
+
+              <h3 class="project-title">JobFlow — AI Mobile Recruitment Ecosystem</h3>
+              <p class="project-description">
+                An enterprise multi-sided recruitment platform connecting job seekers, corporate HR teams, and administrators. Features automated resume skill extraction, intelligent candidate-to-job matching, and instant reactive state synchronization.
+              </p>
+
+              <div class="project-tech-stack">
+                <span>Flutter</span>
+                <span>Dart</span>
+                <span>Firebase Firestore</span>
+                <span>Python AI</span>
+                <span>Role-Based Auth</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="https://github.com/diya2405/JobFlow" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                  <i class="fa-brands fa-github"></i> Source Code
+                </a>
+                <button class="btn btn-glass btn-sm" onclick="openProjectModal('jobflow')">
+                  <i class="fa-solid fa-circle-info"></i> Architecture
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: AI Assistant Multimodal -->
+          <div class="project-card glass-panel">
+            <div class="project-banner">
+              <div class="project-badge ai-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> Multimodal AI</div>
+              <div class="project-preview-mockup">
+                <div class="mockup-header">
+                  <span class="m-dot red"></span><span class="m-dot yellow"></span><span class="m-dot green"></span>
+                  <span class="mockup-title">Ai_Assistant Mobile</span>
+                </div>
+                <div class="mockup-body">
+                  <code>[Input]: "Analyze code and generate visual"</code><br />
+                  <span class="purple-text">[LLM Engine]: Generating Contextual Reasoning</span><br />
+                  <span class="green-text">[Output]: Multimodal Synthesis Rendered</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="lang-tag"><i class="fa-brands fa-flutter"></i> Flutter</span>
+                <span class="stars-tag"><i class="fa-solid fa-robot"></i> Multi-AI APIs</span>
+              </div>
+
+              <h3 class="project-title">Ai_Assistant — Multimodal Intelligence App</h3>
+              <p class="project-description">
+                Interactive cross-platform mobile assistant featuring context-aware conversational chat, prompt-to-image synthesis, multi-language neural translation, and fluid Material 3 responsive styling.
+              </p>
+
+              <div class="project-tech-stack">
+                <span>Flutter</span>
+                <span>Dart</span>
+                <span>Generative AI APIs</span>
+                <span>REST Services</span>
+                <span>Material 3</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="https://github.com/diya2405/Ai_Assistant" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                  <i class="fa-brands fa-github"></i> Source Code
+                </a>
+                <button class="btn btn-glass btn-sm" onclick="openProjectModal('ai_assistant')">
+                  <i class="fa-solid fa-circle-info"></i> Architecture
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: Enterprise Task Manager API -->
+          <div class="project-card glass-panel">
+            <div class="project-banner">
+              <div class="project-badge backend-badge"><i class="fa-solid fa-server"></i> Backend &amp; APIs</div>
+              <div class="project-preview-mockup">
+                <div class="mockup-header">
+                  <span class="m-dot red"></span><span class="m-dot yellow"></span><span class="m-dot green"></span>
+                  <span class="mockup-title">Task Manager REST Engine</span>
+                </div>
+                <div class="mockup-body">
+                  <code>POST /api/v1/tasks/lifecycle</code><br />
+                  <span class="green-text">HTTP 201 Created • 18ms latency</span><br />
+                  <span class="blue-text">Postman Automated Test Suite: 100% Passed</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="lang-tag"><i class="fa-brands fa-node-js"></i> Node.js</span>
+                <span class="stars-tag"><i class="fa-solid fa-circle-check"></i> 100% Tested</span>
+              </div>
+
+              <h3 class="project-title">Enterprise Task Manager Lifecycle API</h3>
+              <p class="project-description">
+                Production-grade RESTful API architected with Node.js and Express. Implements strict schema validation, deterministic error middleware, status transitions, and comprehensive Postman automated test collections.
+              </p>
+
+              <div class="project-tech-stack">
+                <span>Node.js</span>
+                <span>Express</span>
+                <span>RESTful Architecture</span>
+                <span>Postman Automation</span>
+                <span>JSON Schema</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="https://github.com/diya2405/task-manager-api-D25IT118" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                  <i class="fa-brands fa-github"></i> Source Code
+                </a>
+                <button class="btn btn-glass btn-sm" onclick="openProjectModal('task_api')">
+                  <i class="fa-solid fa-circle-info"></i> Architecture
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== CERTIFICATES & CREDENTIALS SECTION ==================== -->
+    <section class="section cert-section" id="certificates">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <span class="section-tag"><i class="fa-solid fa-award"></i> Validated Competencies</span>
+          <h2 class="section-title">Certifications &amp; Accreditations</h2>
+          <p class="section-description">
+            Formally accredited courses and workshops across Cybersecurity, Data Structures, Java, and Software Engineering.
+          </p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="cert-filter-pills">
+          <button class="cert-pill active" data-filter="all">All Credentials</button>
+          <button class="cert-pill" data-filter="security">Cybersecurity</button>
+          <button class="cert-pill" data-filter="java">Java &amp; DSA</button>
+          <button class="cert-pill" data-filter="web">Web &amp; AI</button>
+        </div>
+
+        <!-- Certificate Cards Grid -->
+        <div class="cert-grid" id="certGrid">
+          
+          <!-- Cert 1 -->
+          <div class="cert-item glass-panel" data-cat="security" onclick="openCertModal('certificatesFolder/Ethical_Hacker.pdf', 'Ethical Hacker Certification')">
+            <div class="cert-icon-wrap sec-icon"><i class="fa-solid fa-user-secret"></i></div>
+            <div class="cert-details">
+              <h4>Ethical Hacker Certification</h4>
+              <p>Mobile &amp; Network Security Fundamentals</p>
+              <span class="cert-view-link"><i class="fa-regular fa-file-pdf"></i> View Verified Document</span>
+            </div>
+          </div>
+
+          <!-- Cert 2 -->
+          <div class="cert-item glass-panel" data-cat="security" onclick="openCertModal('certificatesFolder/cyber_1.pdf', 'Cybersecurity Engineering')">
+            <div class="cert-icon-wrap sec-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="cert-details">
+              <h4>Cybersecurity Engineering</h4>
+              <p>Threat vectors, defense protocols, and security audits</p>
+              <span class="cert-view-link"><i class="fa-regular fa-file-pdf"></i> View Verified Document</span>
+            </div>
+          </div>
+
+          <!-- Cert 3 -->
+          <div class="cert-item glass-panel" data-cat="java" onclick="openCertModal('certificatesFolder/Foundation_of_DSA.pdf', 'Foundation of DSA')">
+            <div class="cert-icon-wrap java-icon"><i class="fa-solid fa-network-wired"></i></div>
+            <div class="cert-details">
+              <h4>Foundations of Data Structures &amp; Algorithms</h4>
+              <p>Algorithmic complexity, trees, graphs, and optimization</p>
+              <span class="cert-view-link"><i class="fa-regular fa-file-pdf"></i> View Verified Document</span>
+            </div>
+          </div>
+
+          <!-- Cert 4 -->
+          <div class="cert-item glass-panel" data-cat="java" onclick="openCertModal('certificatesFolder/CoreJava.pdf', 'Core Java Programming')">
+            <div class="cert-icon-wrap java-icon"><i class="fa-brands fa-java"></i></div>
+            <div class="cert-details">
+              <h4>Core Java Programming</h4>
+              <p>Syntax, concurrency, memory management, and streams</p>
+              <span class="cert-view-link"><i class="fa-regular fa-file-pdf"></i> View Verified Document</span>
+            </div>
+          </div>
+
+          <!-- Cert 5 -->
+          <div class="cert-item glass-panel" data-cat="java" onclick="openCertModal('certificatesFolder/Intro_to_oop_with_java.pdf', 'OOP with Java')">
+            <div class="cert-icon-wrap java-icon"><i class="fa-solid fa-cubes"></i></div>
+            <div class="cert-details">
+              <h4>Object-Oriented Programming (Java)</h4>
+              <p>Polymorphism, abstraction, design patterns, and inheritance</p>
+              <span class="cert-view-link"><i class="fa-regular fa-file-pdf"></i> View Verified Document</span>
+            </div>
+          </div>
+
+          <!-- Cert 6 -->
+          <div class="cert-item glass-panel" data-cat="web" onclick="openCertModal('certificatesFolder/JS_Essentials.pdf', 'JavaScript Essentials')">
+            <div class="cert-icon-wrap web-icon"><i class="fa-brands fa-js"></i></div>
+            <div class="cert-details">
+              <h4>JavaScript Essentials</h4>
+              <p>Modern ES6+, DOM manipulation, asynchronous promises</p>
+              <span class="cert-view-link"><i class="fa-regular fa-file-pdf"></i> View Verified Document</span>
+            </div>
+          </div>
+
+          <!-- Cert 7 -->
+          <div class="cert-item glass-panel" data-cat="web" onclick="openCertModal('certificatesFolder/Start_Promts.pdf', 'Generative AI & Prompt Engineering')">
+            <div class="cert-icon-wrap ai-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <div class="cert-details">
+              <h4>Generative AI &amp; Prompt Engineering</h4>
+              <p>Structured prompting, reasoning chains, and LLM fine-tuning</p>
+              <span class="cert-view-link"><i class="fa-regular fa-file-pdf"></i> View Verified Document</span>
+            </div>
+          </div>
+
+          <!-- Cert 8 -->
+          <div class="cert-item glass-panel" data-cat="java" onclick="openCertModal('certificatesFolder/Java_class_library.pdf', 'Java Class Library & APIs')">
+            <div class="cert-icon-wrap java-icon"><i class="fa-solid fa-book-bookmark"></i></div>
+            <div class="cert-details">
+              <h4>Java Class Library Architecture</h4>
+              <p>Collections Framework, I/O streams, and utilities</p>
+              <span class="cert-view-link"><i class="fa-regular fa-file-pdf"></i> View Verified Document</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== GET IN TOUCH / CONTACT SECTION ==================== -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        
+        <div class="contact-card-wrapper glass-panel">
+          
+          <div class="contact-info">
+            <span class="section-tag"><i class="fa-regular fa-paper-plane"></i> Collaboration</span>
+            <h2 class="contact-title">Let's Build Something Exceptional Together</h2>
+            <p class="contact-subtitle">
+              Whether you are looking for a high-impact mobile engineer, an application security intern, or want to collaborate on innovative AI platforms, my inbox is always open.
+            </p>
+
+            <div class="contact-channel-list">
+              <div class="channel-item">
+                <div class="channel-icon"><i class="fa-regular fa-envelope"></i></div>
+                <div>
+                  <span class="channel-label">Direct Email</span>
+                  <div class="channel-action">
+                    <a href="mailto:diyanamya@gmail.com" class="channel-value">diyanamya@gmail.com</a>
+                    <button class="copy-pill-btn" onclick="copyToClipboard('diyanamya@gmail.com', 'Email copied to clipboard!')">Copy</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="channel-item">
+                <div class="channel-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+                <div>
+                  <span class="channel-label">Professional Network</span>
+                  <a href="https://www.linkedin.com/in/diya-shah-85ba49308/" target="_blank" rel="noopener noreferrer" class="channel-value">linkedin.com/in/diya-shah-85ba49308</a>
+                </div>
+              </div>
+
+              <div class="channel-item">
+                <div class="channel-icon"><i class="fa-brands fa-github"></i></div>
+                <div>
+                  <span class="channel-label">Open Source Code</span>
+                  <a href="https://github.com/diya2405" target="_blank" rel="noopener noreferrer" class="channel-value">github.com/diya2405</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form-side">
+            <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+              <div class="form-group">
+                <label for="senderName">Your Name</label>
+                <input type="text" id="senderName" placeholder="e.g. Alex Mercer" required />
+              </div>
+
+              <div class="form-group">
+                <label for="senderEmail">Email Address</label>
+                <input type="email" id="senderEmail" placeholder="e.g. alex@company.com" required />
+              </div>
+
+              <div class="form-group">
+                <label for="senderSubject">Subject / Opportunity</label>
+                <input type="text" id="senderSubject" placeholder="Internship / Project Discussion" required />
+              </div>
+
+              <div class="form-group">
+                <label for="senderMessage">Message</label>
+                <textarea id="senderMessage" rows="4" placeholder="Tell me about your team or project requirements..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">
+                <span>Send Dispatch</span>
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Minimal Luxury Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-left">
+        <span class="footer-logo">&lt;DS /&gt;</span>
+        <p>© <span id="currentYear">2026</span> Diya Shah. Engineered with precision &amp; modern web standards.</p>
+      </div>
+      
+      <div class="footer-right">
+        <a href="https://github.com/diya2405" target="_blank" rel="noopener noreferrer" class="footer-link"><i class="fa-brands fa-github"></i> GitHub</a>
+        <a href="https://www.linkedin.com/in/diya-shah-85ba49308/" target="_blank" rel="noopener noreferrer" class="footer-link"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a href="#hero" class="footer-back-top"><i class="fa-solid fa-chevron-up"></i> Top</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- Certificate PDF Modal Viewer -->
+  <div class="modal-backdrop" id="certModal">
+    <div class="modal-window glass-panel">
+      <div class="modal-header">
+        <h3 class="modal-title" id="certModalTitle">Certificate Document</h3>
+        <button class="modal-close-btn" onclick="closeCertModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <iframe id="certIframe" src="" class="cert-pdf-iframe" title="Certificate PDF Viewer"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project Architecture Modal -->
+  <div class="modal-backdrop" id="projectModal">
+    <div class="modal-window glass-panel modal-lg">
+      <div class="modal-header">
+        <h3 class="modal-title" id="projectModalTitle">System Architecture Spec</h3>
+        <button class="modal-close-btn" onclick="closeProjectModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="projectModalBody">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Core JavaScript Script -->
+  <script src="script.js"></script>
+</body>
+</html>
