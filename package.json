@@ -1,6 +1,10 @@
 {
-  "dependencies": {
-    "framer-motion": "^12.34.0",
-    "react-router-dom": "^7.13.0"
+  "name": "diya-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Diya Shah - Elite Engineering Portfolio",
+  "scripts": {
+    "build": "node build.js",
+    "start": "node build.js"
   }
 }
