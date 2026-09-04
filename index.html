@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diya Shah | Mobile Systems &amp; Security Engineer</title>
+  <title>Diya's World ✨ | Mobile Systems &amp; AI Engineer</title>
   
   <!-- SEO & Social Graph Meta Tags -->
-  <meta name="description" content="Portfolio of Diya Shah — Mobile Systems Engineer, App Security Analyst, and Flutter Architect. Explore flagship projects in binary SAST, AI recruitment, and cross-platform apps." />
-  <meta name="keywords" content="Diya Shah, Flutter Developer, Mobile Security, Android SAST, Firebase, OWASP Mobile, AI Integration, Portfolio" />
+  <meta name="description" content="Welcome to Diya's World — Mobile Systems Engineer, App Security Analyst, and Flutter Architect. Explore flagship projects in binary SAST, AI recruitment, and cross-platform apps." />
+  <meta name="keywords" content="Diya Shah, Diya's World, Flutter Developer, Mobile Security, Android SAST, Firebase, OWASP Mobile, AI Integration, Portfolio" />
   <meta name="author" content="Diya Shah" />
   
-  <meta property="og:title" content="Diya Shah | Mobile Systems &amp; Security Engineer" />
-  <meta property="og:description" content="Crafting high-performance Flutter mobile systems and Android binary security analyzers. Explore flagship projects, skills, and academic milestones." />
+  <meta property="og:title" content="Diya's World ✨ | Mobile Systems &amp; AI Engineer" />
+  <meta property="og:description" content="Step into Diya's World — high-performance Flutter mobile systems, Android binary security analyzers, and applied AI." />
   <meta property="og:image" content="diya_avatar.jpg" />
   <meta property="og:type" content="website" />
   
@@ -28,6 +28,103 @@
 </head>
 <body>
 
+  <!-- ==================== DIYA'S WORLD MAGICAL INTRO THEATRE ==================== -->
+  <div class="intro-theater-backdrop" id="introTheater">
+    <canvas class="theater-stars-canvas" id="theaterStarsCanvas"></canvas>
+    <div class="theater-ambient-glow"></div>
+
+    <!-- Always accessible Skip Action -->
+    <div class="theater-top-bar">
+      <div class="theater-brand">
+        <span class="sparkle-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+        <span>Diya's World</span>
+      </div>
+      <button class="theater-btn-skip" id="theaterSkipBtn" aria-label="Skip to Portfolio">
+        <span>Skip Intro</span>
+        <i class="fa-solid fa-forward"></i>
+      </button>
+    </div>
+
+    <div class="theater-main-stage">
+      <!-- PHASE 1: MAGICAL CELESTIAL PRELOADER -->
+      <div class="intro-preloader" id="introPreloader">
+        <div class="magic-portal-sphere">
+          <div class="portal-core"></div>
+          <div class="portal-ring ring-1"></div>
+          <div class="portal-ring ring-2"></div>
+          <div class="portal-ring ring-3"></div>
+          <div class="portal-particles-icon">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </div>
+        </div>
+        <h2 class="preloader-title">Welcome to <span class="gradient-text">Diya's World</span> ✨</h2>
+        <p class="preloader-subtitle" id="preloaderStatusText">Synthesizing AI Avatar &amp; Engineering Telemetry...</p>
+        <div class="preloader-bar-track">
+          <div class="preloader-bar-fill" id="preloaderBarFill"></div>
+        </div>
+        <div class="preloader-percent" id="preloaderPercent">0%</div>
+      </div>
+
+      <!-- PHASE 2: AI AVATAR VIDEO PLAYER EXPERIENCE -->
+      <div class="intro-video-stage" id="introVideoStage" style="display: none;">
+        <div class="stage-header">
+          <div class="live-broadcast-tag">
+            <span class="pulse-recording-dot"></span>
+            <span>LIVE AI AVATAR • 4K STREAM</span>
+          </div>
+          <button class="theater-btn-mute" id="theaterMuteBtn" aria-label="Toggle Voice Mute">
+            <i class="fa-solid fa-volume-high" id="theaterMuteIcon"></i>
+            <span id="theaterMuteText">Mute Voice</span>
+          </button>
+        </div>
+
+        <!-- Video Frame with Live Lip-Sync Canvas -->
+        <div class="video-pod glass-panel">
+          <div class="video-viewport">
+            <!-- 60fps Lip-Sync + Micro-Blink Canvas -->
+            <canvas id="avatarCanvas" width="600" height="600" class="avatar-canvas"></canvas>
+            
+            <div class="video-overlay-fx"></div>
+            
+            <!-- Hologram Live Waveform Equalizer -->
+            <div class="theater-waveform" id="theaterWaveform">
+              <span class="wf-bar"></span><span class="wf-bar"></span><span class="wf-bar"></span>
+              <span class="wf-bar"></span><span class="wf-bar"></span><span class="wf-bar"></span>
+              <span class="wf-bar"></span><span class="wf-bar"></span><span class="wf-bar"></span>
+              <span class="wf-bar"></span><span class="wf-bar"></span><span class="wf-bar"></span>
+            </div>
+
+            <!-- Status Badge in Video -->
+            <div class="video-status-chip">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <span id="videoStatusChipText">Diya's Voice Agent (Female TTS)</span>
+            </div>
+          </div>
+
+          <!-- Teleprompter / Subtitle Card -->
+          <div class="teleprompter-card">
+            <div class="teleprompter-meta">
+              <span class="speaker-tag"><i class="fa-solid fa-circle-user"></i> Diya Shah</span>
+              <span class="teleprompter-progress" id="teleprompterStep">1 / 4</span>
+            </div>
+            <p class="teleprompter-dialogue" id="teleprompterText">
+              "Hello and welcome to Diya's World! ✨"
+            </p>
+          </div>
+        </div>
+
+        <!-- Explore Button Action -->
+        <div class="stage-actions" id="stageActions">
+          <button class="btn btn-primary btn-lg explore-portal-btn" id="theaterExploreBtn">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Explore Diya's World</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Ambient Aurora Glow Orbs -->
   <div class="ambient-glow glow-1"></div>
   <div class="ambient-glow glow-2"></div>
@@ -38,7 +135,7 @@
     <nav class="navbar glass-panel">
       <a href="#hero" class="brand-logo">
         <span class="logo-bracket">&lt;</span>DS<span class="logo-slash">/</span><span class="logo-bracket">&gt;</span>
-        <span class="brand-name">Diya Shah</span>
+        <span class="brand-name">Diya's World</span>
       </a>
 
       <ul class="nav-menu" id="navMenu">
@@ -100,8 +197,8 @@
               <span>Explore Flagship Projects</span>
             </a>
             <button class="btn btn-glass" id="heroPlayAvatarBtn">
-              <i class="fa-solid fa-play"></i>
-              <span>Listen to AI Intro</span>
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <span>Watch AI Video Intro</span>
             </button>
             <button class="btn btn-outline" onclick="downloadResume()">
               <i class="fa-solid fa-file-arrow-down"></i>

@@ -1,9 +1,10 @@
 /**
  * DIYA SHAH — ELITE PORTFOLIO INTERACTIONS
- * Modern JavaScript Engine for Speech AI, Modals, Filters, & Telemetry
+ * Modern JavaScript Engine for Diya's World, Speech AI, Modals, Filters, & Telemetry
  */
 
 document.addEventListener("DOMContentLoaded", () => {
+  initDiyaWorldIntro();
   initTypewriter();
   initAIAvatarVoice();
   initSkillsFilter();
@@ -62,22 +63,453 @@ function initTypewriter() {
 }
 
 /* ==========================================================================
-   2. INTERACTIVE AI AVATAR VOICE INTRO & AUDIO EQUALIZER
+   2. DIYA'S WORLD — MAGICAL CELESTIAL PRELOADER & AI AVATAR VIDEO THEATER
    ========================================================================== */
-let isSpeaking = false;
-let isMuted = false;
-let currentUtterance = null;
 
-const speechTranscript = [
-  "Hi, I'm Diya Shah! Welcome to my engineering portfolio.",
-  "I specialize in crafting high-performance Flutter mobile systems and analyzing Android APK binaries at the byte level for OWASP security flaws.",
-  "Explore my flagship projects below, including my zero-JVM binary analyzer, JobFlow AI recruitment platform, and full-stack cloud APIs.",
-  "Feel free to check out my verified certificates or reach out to collaborate on software engineering internships!"
+let theaterSpeaking = false;
+let theaterMuted = false;
+let theaterUtterance = null;
+let starAnimationId = null;
+let avatarAnimationId = null;
+let launchVideoExperienceDirectly = null;
+
+const diyaIntroScript = [
+  {
+    text: "Hello and welcome to Diya's World! ✨",
+    speech: "Hello and welcome to Diya's World!"
+  },
+  {
+    text: "I'm Diya Shah — a Mobile Systems Engineer and Flutter Architect passionate about fusing fluid, responsive mobile interfaces with low-level Android security.",
+    speech: "I'm Diya Shah, a Mobile Systems Engineer and Flutter Architect passionate about fusing fluid, responsive mobile interfaces with low level Android security."
+  },
+  {
+    text: "From engineering zero-JVM Dalvik bytecode analyzers that audit APKs for OWASP vulnerabilities in under 4 seconds, to architecting AI-powered platforms and ranking 58th in Gujarat, I love solving hard engineering problems from the byte level up to the UI.",
+    speech: "From engineering zero J V M Dalvik bytecode analyzers that audit APKs for OWASP vulnerabilities in under four seconds, to architecting AI powered platforms and ranking 58th in Gujarat, I love solving hard engineering problems from the byte level up to the UI."
+  },
+  {
+    text: "Feel free to explore my flagship projects, verify my credentials, or inspect my system architecture. Let's create something extraordinary together!",
+    speech: "Feel free to explore my flagship projects, verify my credentials, or inspect my system architecture. Let's create something extraordinary together!"
+  }
 ];
 
+// Guaranteed Natural Female Voice Selector
+function getNaturalFemaleVoice() {
+  if (!("speechSynthesis" in window)) return null;
+  const voices = window.speechSynthesis.getVoices();
+  if (!voices || voices.length === 0) return null;
+
+  const femalePriority = [
+    /zira/i,
+    /jenny/i,
+    /aria/i,
+    /samantha/i,
+    /karen/i,
+    /victoria/i,
+    /moira/i,
+    /fiona/i,
+    /google uk english female/i,
+    /google us english female/i,
+    /natural.*female/i,
+    /female/i,
+    /eva/i
+  ];
+
+  const maleExcludes = /david|mark|george|daniel|guy|male|james|richard|oliver|stefan|pablo/i;
+
+  for (const pattern of femalePriority) {
+    const found = voices.find(v => pattern.test(v.name) && !maleExcludes.test(v.name));
+    if (found) return found;
+  }
+
+  const enFallback = voices.find(v => (v.lang.startsWith("en") || v.lang.startsWith("en-US") || v.lang.startsWith("en-GB")) && !maleExcludes.test(v.name));
+  return enFallback || voices[0];
+}
+
+function initDiyaWorldIntro() {
+  const introTheater = document.getElementById("introTheater");
+  const introPreloader = document.getElementById("introPreloader");
+  const introVideoStage = document.getElementById("introVideoStage");
+  const theaterSkipBtn = document.getElementById("theaterSkipBtn");
+  const theaterExploreBtn = document.getElementById("theaterExploreBtn");
+  const theaterMuteBtn = document.getElementById("theaterMuteBtn");
+  const theaterMuteIcon = document.getElementById("theaterMuteIcon");
+  const theaterMuteText = document.getElementById("theaterMuteText");
+  const preloaderBarFill = document.getElementById("preloaderBarFill");
+  const preloaderPercent = document.getElementById("preloaderPercent");
+  const preloaderStatusText = document.getElementById("preloaderStatusText");
+  const teleprompterText = document.getElementById("teleprompterText");
+  const teleprompterStep = document.getElementById("teleprompterStep");
+  const theaterWaveform = document.getElementById("theaterWaveform");
+  const videoStatusChipText = document.getElementById("videoStatusChipText");
+  const heroPlayAvatarBtn = document.getElementById("heroPlayAvatarBtn");
+
+  if (!introTheater) return;
+
+  // Setup Cosmic Starfield Background
+  initStarfield();
+
+  // Setup AI Avatar Lip-Sync & Face Canvas
+  const avatarController = initAvatarCanvas();
+
+  // Handle Mute Button
+  if (theaterMuteBtn) {
+    theaterMuteBtn.addEventListener("click", () => {
+      theaterMuted = !theaterMuted;
+      if (theaterMuted) {
+        if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+        if (theaterMuteIcon) theaterMuteIcon.className = "fa-solid fa-volume-xmark";
+        if (theaterMuteText) theaterMuteText.textContent = "Unmute";
+        showToast("Voice muted (Teleprompter active)");
+      } else {
+        if (theaterMuteIcon) theaterMuteIcon.className = "fa-solid fa-volume-high";
+        if (theaterMuteText) theaterMuteText.textContent = "Mute Voice";
+        showToast("Voice unmuted");
+      }
+    });
+  }
+
+  // Handle Skip & Explore Actions
+  function exitIntroTheater() {
+    theaterSpeaking = false;
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+    }
+    if (avatarController) avatarController.setSpeaking(false);
+    if (theaterWaveform) theaterWaveform.classList.remove("active");
+
+    introTheater.classList.add("portal-exit");
+    sessionStorage.setItem("diya_intro_seen", "true");
+
+    setTimeout(() => {
+      introTheater.style.display = "none";
+      introTheater.classList.remove("portal-exit");
+    }, 850);
+  }
+
+  if (theaterSkipBtn) theaterSkipBtn.addEventListener("click", exitIntroTheater);
+  if (theaterExploreBtn) theaterExploreBtn.addEventListener("click", exitIntroTheater);
+
+  // Global launcher to re-trigger video intro theatre anytime!
+  launchVideoExperienceDirectly = function() {
+    introTheater.style.display = "flex";
+    introTheater.classList.remove("portal-exit");
+    if (introPreloader) introPreloader.style.display = "none";
+    if (introVideoStage) introVideoStage.style.display = "flex";
+    startVideoSpeechSequence();
+  };
+
+  if (heroPlayAvatarBtn) {
+    heroPlayAvatarBtn.addEventListener("click", () => {
+      launchVideoExperienceDirectly();
+    });
+  }
+
+  // Preloader Sequence
+  function runPreloader() {
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += Math.floor(Math.random() * 8) + 6;
+      if (progress > 100) progress = 100;
+
+      if (preloaderBarFill) preloaderBarFill.style.width = `${progress}%`;
+      if (preloaderPercent) preloaderPercent.textContent = `${progress}%`;
+
+      if (progress > 30 && progress < 65) {
+        if (preloaderStatusText) preloaderStatusText.textContent = "Tuning Low-Level Bytecode & Security Engines...";
+      } else if (progress >= 65 && progress < 100) {
+        if (preloaderStatusText) preloaderStatusText.textContent = "Calibrating Neural Voice Agent & 60fps Lip-Sync...";
+      } else if (progress === 100) {
+        clearInterval(interval);
+        if (preloaderStatusText) preloaderStatusText.textContent = "Welcome to Diya's World ✨";
+
+        setTimeout(() => {
+          if (introPreloader) {
+            introPreloader.style.opacity = "0";
+            setTimeout(() => {
+              introPreloader.style.display = "none";
+              if (introVideoStage) {
+                introVideoStage.style.display = "flex";
+                startVideoSpeechSequence();
+              }
+            }, 400);
+          }
+        }, 500);
+      }
+    }, 80);
+  }
+
+  // Speech Sequence
+  let currentSentenceIndex = 0;
+
+  function startVideoSpeechSequence() {
+    currentSentenceIndex = 0;
+    playCurrentSentence();
+  }
+
+  function playCurrentSentence() {
+    if (currentSentenceIndex >= diyaIntroScript.length) {
+      // Intro completed
+      theaterSpeaking = false;
+      if (avatarController) avatarController.setSpeaking(false);
+      if (theaterWaveform) theaterWaveform.classList.remove("active");
+      if (videoStatusChipText) videoStatusChipText.innerHTML = "Intro Complete ✨ Click Explore Below";
+      return;
+    }
+
+    theaterSpeaking = true;
+    const item = diyaIntroScript[currentSentenceIndex];
+
+    if (teleprompterStep) teleprompterStep.textContent = `${currentSentenceIndex + 1} / ${diyaIntroScript.length}`;
+    if (teleprompterText) {
+      teleprompterText.style.opacity = "0.3";
+      setTimeout(() => {
+        teleprompterText.textContent = `"${item.text}"`;
+        teleprompterText.style.opacity = "1";
+      }, 150);
+    }
+
+    if (theaterWaveform) theaterWaveform.classList.add("active");
+    if (avatarController) avatarController.setSpeaking(true);
+
+    if ("speechSynthesis" in window && !theaterMuted) {
+      window.speechSynthesis.cancel();
+      theaterUtterance = new SpeechSynthesisUtterance(item.speech);
+      theaterUtterance.rate = 0.98;
+      theaterUtterance.pitch = 1.1;
+
+      const voice = getNaturalFemaleVoice();
+      if (voice) {
+        theaterUtterance.voice = voice;
+        if (videoStatusChipText) videoStatusChipText.textContent = `Speaking (${voice.name.replace(/Microsoft|Google|Desktop/gi, '').trim()} Female AI)`;
+      }
+
+      theaterUtterance.onboundary = (e) => {
+        if (avatarController && e.name === "word") {
+          avatarController.pulseViseme();
+        }
+      };
+
+      theaterUtterance.onend = () => {
+        if (!theaterSpeaking) return;
+        if (avatarController) avatarController.setSpeaking(false);
+        if (theaterWaveform) theaterWaveform.classList.remove("active");
+        currentSentenceIndex++;
+        setTimeout(() => {
+          if (theaterSpeaking) playCurrentSentence();
+        }, 500);
+      };
+
+      theaterUtterance.onerror = () => {
+        if (!theaterSpeaking) return;
+        if (avatarController) avatarController.setSpeaking(false);
+        if (theaterWaveform) theaterWaveform.classList.remove("active");
+        currentSentenceIndex++;
+        setTimeout(() => {
+          if (theaterSpeaking) playCurrentSentence();
+        }, 3200);
+      };
+
+      window.speechSynthesis.speak(theaterUtterance);
+    } else {
+      // Fallback cadence timer if browser speech synthesis is unavailable or muted
+      const duration = Math.max(3400, item.speech.split(" ").length * 360);
+      setTimeout(() => {
+        if (!theaterSpeaking) return;
+        if (avatarController) avatarController.setSpeaking(false);
+        if (theaterWaveform) theaterWaveform.classList.remove("active");
+        currentSentenceIndex++;
+        setTimeout(() => {
+          if (theaterSpeaking) playCurrentSentence();
+        }, 500);
+      }, duration);
+    }
+  }
+
+  // Check if intro has already been seen in this session
+  if (sessionStorage.getItem("diya_intro_seen")) {
+    introTheater.style.display = "none";
+  } else {
+    runPreloader();
+  }
+}
+
+// --------------------------------------------------------------------------
+// Canvas Starfield Background
+// --------------------------------------------------------------------------
+function initStarfield() {
+  const canvas = document.getElementById("theaterStarsCanvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  const stars = [];
+  for (let i = 0; i < 110; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: Math.random() * 1.5 + 0.5,
+      alpha: Math.random() * 0.8 + 0.2,
+      speed: Math.random() * 0.02 + 0.005,
+      twinkleDir: Math.random() > 0.5 ? 1 : -1
+    });
+  }
+
+  function drawStars() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let s of stars) {
+      s.alpha += s.speed * s.twinkleDir;
+      if (s.alpha > 0.95) { s.alpha = 0.95; s.twinkleDir = -1; }
+      else if (s.alpha < 0.15) { s.alpha = 0.15; s.twinkleDir = 1; }
+
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(200, 230, 255, ${s.alpha})`;
+      ctx.shadowBlur = 4;
+      ctx.shadowColor = "#38bdf8";
+      ctx.fill();
+    }
+    starAnimationId = requestAnimationFrame(drawStars);
+  }
+  drawStars();
+}
+
+// --------------------------------------------------------------------------
+// AI Avatar 60fps Lip-Sync & Face Controller
+// --------------------------------------------------------------------------
+function initAvatarCanvas() {
+  const canvas = document.getElementById("avatarCanvas");
+  if (!canvas) return null;
+  const ctx = canvas.getContext("2d");
+
+  const avatarImg = new Image();
+  avatarImg.src = "diya_avatar.jpg";
+
+  let isLoaded = false;
+  avatarImg.onload = () => {
+    isLoaded = true;
+  };
+
+  let speaking = false;
+  let targetMouthOpen = 0;
+  let currentMouthOpen = 0;
+  let mouthVisemeTimer = 0;
+
+  let blinkState = 0;
+  let blinkTimer = 0;
+  let nextBlinkTime = 180 + Math.random() * 120;
+
+  function render(time) {
+    ctx.clearRect(0, 0, 600, 600);
+
+    if (isLoaded) {
+      // 1. Subtle Breathing & Tilt
+      const breathY = Math.sin(time * 0.002) * 1.8;
+      const tilt = Math.sin(time * 0.001) * 0.006;
+
+      ctx.save();
+      ctx.translate(300, 300 + breathY);
+      ctx.rotate(tilt);
+      ctx.drawImage(avatarImg, -300, -300, 600, 600);
+
+      // 2. Natural Micro-Blink
+      blinkTimer++;
+      if (blinkTimer >= nextBlinkTime) {
+        blinkState += 0.25;
+        if (blinkState >= 1) {
+          blinkState = 0;
+          blinkTimer = 0;
+          nextBlinkTime = 160 + Math.random() * 140;
+        }
+      }
+
+      if (blinkState > 0.05) {
+        ctx.save();
+        ctx.fillStyle = "rgba(196, 142, 119, 0.92)";
+        // Left Eye Eyelid
+        ctx.beginPath();
+        ctx.ellipse(264 - 300, 158 - 300, 13, 5 * blinkState, 0, 0, Math.PI * 2);
+        ctx.fill();
+        // Right Eye Eyelid
+        ctx.beginPath();
+        ctx.ellipse(334 - 300, 155 - 300, 13, 5 * blinkState, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // 3. Lip-Sync Mouth Opening
+      if (speaking) {
+        mouthVisemeTimer++;
+        const cadence = (Math.sin(mouthVisemeTimer * 0.28) + 1) * 0.4 + (Math.sin(mouthVisemeTimer * 0.65) + 1) * 0.2;
+        targetMouthOpen = Math.min(1.0, cadence);
+      } else {
+        targetMouthOpen = 0;
+      }
+
+      currentMouthOpen += (targetMouthOpen - currentMouthOpen) * 0.35;
+
+      if (currentMouthOpen > 0.08) {
+        ctx.save();
+        const mx = 302 - 300;
+        const my = 236 - 300;
+        const mw = 22;
+        const mh = currentMouthOpen * 6.5;
+
+        // Inner mouth opening cavity
+        ctx.beginPath();
+        ctx.ellipse(mx, my + 2, mw * 0.85, mh, 0, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(75, 20, 24, 0.88)";
+        ctx.fill();
+
+        // Subtle upper teeth highlight
+        if (currentMouthOpen > 0.25) {
+          ctx.beginPath();
+          ctx.ellipse(mx, my + 1, mw * 0.55, 1.8, 0, 0, Math.PI);
+          ctx.fillStyle = "rgba(245, 242, 238, 0.85)";
+          ctx.fill();
+        }
+
+        // Lower lip descent
+        ctx.beginPath();
+        ctx.ellipse(mx, my + mh + 2.5, mw * 0.9, 3.2, 0, 0, Math.PI);
+        ctx.fillStyle = "rgba(180, 78, 86, 0.7)";
+        ctx.fill();
+
+        ctx.restore();
+      }
+
+      ctx.restore();
+    }
+
+    avatarAnimationId = requestAnimationFrame(render);
+  }
+
+  render(0);
+
+  return {
+    setSpeaking(val) {
+      speaking = val;
+      if (!val) {
+        targetMouthOpen = 0;
+      }
+    },
+    pulseViseme() {
+      mouthVisemeTimer += 1.5;
+      targetMouthOpen = Math.min(1.0, targetMouthOpen + 0.35);
+    }
+  };
+}
+
+/* ==========================================================================
+   3. HERO AVATAR CARD AUDIO CONTROLLER
+   ========================================================================== */
 function initAIAvatarVoice() {
   const avatarToggleBtn = document.getElementById("avatarToggleBtn");
-  const heroPlayAvatarBtn = document.getElementById("heroPlayAvatarBtn");
   const playIcon = document.getElementById("playIcon");
   const equalizer = document.getElementById("equalizer");
   const voiceStatus = document.getElementById("voiceStatus");
@@ -87,104 +519,31 @@ function initAIAvatarVoice() {
 
   if (!avatarToggleBtn) return;
 
-  function startVoicePlayback() {
-    if (isSpeaking) {
-      stopVoicePlayback();
-      return;
+  // When user clicks the hero avatar card play button, launch the full video theater!
+  avatarToggleBtn.addEventListener("click", () => {
+    if (typeof launchVideoExperienceDirectly === "function") {
+      launchVideoExperienceDirectly();
     }
-
-    isSpeaking = true;
-    if (equalizer) equalizer.classList.add("active");
-    if (playIcon) playIcon.className = "fa-solid fa-pause";
-    if (voiceStatus) voiceStatus.textContent = "Voice intro playing...";
-
-    let sentenceIndex = 0;
-
-    function playNextSentence() {
-      if (!isSpeaking || sentenceIndex >= speechTranscript.length) {
-        stopVoicePlayback();
-        return;
-      }
-
-      const sentence = speechTranscript[sentenceIndex];
-      if (captionText) {
-        captionText.style.opacity = 0.5;
-        setTimeout(() => {
-          captionText.textContent = `"${sentence}"`;
-          captionText.style.opacity = 1;
-        }, 150);
-      }
-
-      if ("speechSynthesis" in window && !isMuted) {
-        window.speechSynthesis.cancel();
-        currentUtterance = new SpeechSynthesisUtterance(sentence);
-        currentUtterance.rate = 1.0;
-        currentUtterance.pitch = 1.05;
-
-        // Try selecting a natural female voice
-        const voices = window.speechSynthesis.getVoices();
-        const preferredVoice = voices.find(v => 
-          v.name.includes("Google") || 
-          v.name.includes("Natural") || 
-          v.name.includes("Zira") || 
-          v.name.includes("Samantha") ||
-          v.name.includes("Female")
-        );
-        if (preferredVoice) currentUtterance.voice = preferredVoice;
-
-        currentUtterance.onend = () => {
-          sentenceIndex++;
-          setTimeout(playNextSentence, 400);
-        };
-
-        currentUtterance.onerror = () => {
-          sentenceIndex++;
-          setTimeout(playNextSentence, 3200);
-        };
-
-        window.speechSynthesis.speak(currentUtterance);
-      } else {
-        // Fallback timed progression if speech synthesis is disabled or muted
-        setTimeout(() => {
-          sentenceIndex++;
-          playNextSentence();
-        }, 3400);
-      }
-    }
-
-    playNextSentence();
-  }
-
-  function stopVoicePlayback() {
-    isSpeaking = false;
-    if ("speechSynthesis" in window) {
-      window.speechSynthesis.cancel();
-    }
-    if (equalizer) equalizer.classList.remove("active");
-    if (playIcon) playIcon.className = "fa-solid fa-play";
-    if (voiceStatus) voiceStatus.textContent = "Click to replay intro";
-  }
-
-  avatarToggleBtn.addEventListener("click", startVoicePlayback);
-  if (heroPlayAvatarBtn) heroPlayAvatarBtn.addEventListener("click", startVoicePlayback);
+  });
 
   if (voiceToggleVoice) {
     voiceToggleVoice.addEventListener("click", () => {
-      stopVoicePlayback();
-      setTimeout(startVoicePlayback, 200);
+      if (typeof launchVideoExperienceDirectly === "function") {
+        launchVideoExperienceDirectly();
+      }
     });
   }
 
   if (voiceMuteToggle) {
     voiceMuteToggle.addEventListener("click", () => {
-      isMuted = !isMuted;
-      if (isMuted) {
+      theaterMuted = !theaterMuted;
+      if (theaterMuted) {
         if ("speechSynthesis" in window) window.speechSynthesis.cancel();
         voiceMuteToggle.innerHTML = '<i class="fa-solid fa-volume-high"></i> Unmute';
-        showToast("AI Voice Muted (Captions only)");
+        showToast("Voice Muted (Teleprompter only)");
       } else {
         voiceMuteToggle.innerHTML = '<i class="fa-solid fa-volume-xmark"></i> Mute';
-        showToast("AI Voice Unmuted");
+        showToast("Voice Unmuted");
       }
     });
   }
