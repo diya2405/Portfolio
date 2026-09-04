@@ -78,11 +78,11 @@
           </button>
         </div>
 
-        <!-- Audio Showcase Frame with Diya's Studio Portrait -->
+        <!-- Video Showcase Frame with Diya's Video -->
         <div class="video-pod glass-panel">
           <div class="video-viewport">
-            <!-- Crisp Studio Portrait -->
-            <img src="diya_avatar.jpg" alt="Diya Shah - Studio Portrait" class="avatar-theater-img" id="avatarTheaterImg" />
+            <!-- Native High-Definition Video Player -->
+            <video id="introVideoElement" src="gemini_generated_video_5bb573a1.mp4" playsinline loop muted poster="diya_avatar.jpg" class="avatar-theater-video" preload="auto"></video>
             
             <!-- Hologram Live Waveform Equalizer -->
             <div class="theater-waveform" id="theaterWaveform">
@@ -94,9 +94,14 @@
 
             <!-- Status Badge -->
             <div class="video-status-chip">
-              <i class="fa-solid fa-volume-high"></i>
-              <span id="videoStatusChipText">Diya's Voice Agent</span>
+              <i class="fa-solid fa-play"></i>
+              <span id="videoStatusChipText">Diya's Introduction Video</span>
             </div>
+
+            <!-- Video Play / Pause Center Overlay Button -->
+            <button class="video-play-center-btn" id="videoPlayCenterBtn" aria-label="Play or Pause Video">
+              <i class="fa-solid fa-play" id="videoPlayCenterIcon"></i>
+            </button>
           </div>
 
           <!-- Teleprompter / Subtitle Card -->
@@ -204,40 +209,41 @@
             </button>
           </div>
 
-          <!-- Telemetry Metric Pills -->
+          <!-- Telemetry Metric Pills with Animated Counters -->
           <div class="hero-telemetry">
             <div class="telemetry-item">
-              <span class="telemetry-value">9.46</span>
+              <span class="telemetry-value counter-value" data-target="9.46" data-decimals="2">0.00</span>
               <span class="telemetry-label">Diploma CGPA (Top 1%)</span>
             </div>
             <div class="telemetry-divider"></div>
             <div class="telemetry-item">
-              <span class="telemetry-value">Rank 58</span>
+              <span class="telemetry-value counter-value" data-target="58" data-prefix="Rank ">Rank 0</span>
               <span class="telemetry-label">Gujarat State DDCET</span>
             </div>
             <div class="telemetry-divider"></div>
             <div class="telemetry-item">
-              <span class="telemetry-value">37+</span>
+              <span class="telemetry-value counter-value" data-target="37" data-suffix="+">0+</span>
               <span class="telemetry-label">GitHub Repositories</span>
             </div>
             <div class="telemetry-divider"></div>
             <div class="telemetry-item">
-              <span class="telemetry-value">3.8s</span>
+              <span class="telemetry-value counter-value" data-target="3.8" data-decimals="1" data-suffix="s">0.0s</span>
               <span class="telemetry-label">Zero-JVM SAST Scan</span>
             </div>
           </div>
         </div>
 
-        <!-- Right AI Avatar Showcase Card -->
+        <!-- Right AI Avatar Showcase Card with Video Support -->
         <div class="hero-avatar-area">
           <div class="avatar-card glass-panel">
             <div class="avatar-badge">
               <span class="ai-sparkle"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
-              <span>Interactive AI Voice Intro</span>
+              <span>Diya's Video &amp; Voice Intro</span>
             </div>
 
             <div class="avatar-frame">
-              <img src="diya_avatar.jpg" alt="Diya Shah - Professional Studio Avatar" class="avatar-img" id="avatarImage" />
+              <img src="diya_avatar.jpg" alt="Diya Shah - Studio Portrait" class="avatar-img" id="avatarImage" />
+              <video id="heroAvatarVideo" src="gemini_generated_video_5bb573a1.mp4" playsinline muted loop class="avatar-img" style="display: none; object-fit: cover;" poster="diya_avatar.jpg"></video>
               <div class="avatar-glow-ring"></div>
 
               <!-- Animated Waveform Equalizer -->
@@ -253,7 +259,7 @@
               </div>
 
               <!-- Playback Overlay Button -->
-              <button class="avatar-play-overlay" id="avatarToggleBtn" aria-label="Toggle AI Intro">
+              <button class="avatar-play-overlay" id="avatarToggleBtn" aria-label="Toggle Video Intro">
                 <i class="fa-solid fa-play" id="playIcon"></i>
               </button>
             </div>
@@ -539,10 +545,240 @@
           </p>
         </div>
 
-        <div class="projects-grid">
+        <!-- ==================== ANIMATED HORIZONTAL PROJECT SHOWCASE ==================== -->
+        <div class="horizontal-showcase-wrapper">
+          <div class="horizontal-showcase-header">
+            <div class="stream-badge">
+              <span class="stream-dot"></span>
+              <span>CONTINUOUS PROJECT STREAM • HOVER TO PAUSE</span>
+            </div>
+            <div class="stream-controls">
+              <button class="stream-arrow-btn" id="streamPrevBtn" aria-label="Previous Projects">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <button class="stream-arrow-btn" id="streamNextBtn" aria-label="Next Projects">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="horizontal-marquee-container" id="horizontalMarqueeContainer">
+            <div class="marquee-track" id="marqueeTrack">
+              <!-- Card 1: APK Security Analyzer -->
+              <div class="h-project-card glass-panel" onclick="openProjectModal('apk_analyzer')">
+                <div class="h-card-top">
+                  <span class="h-card-badge sec-badge"><i class="fa-solid fa-shield-halved"></i> SAST</span>
+                  <span class="h-card-telemetry">3.8s Scan</span>
+                </div>
+                <h4 class="h-card-title">Mobile App Security Analyzer</h4>
+                <p class="h-card-desc">Zero-JVM bytecode parser &amp; OWASP Mobile Top 10 automated auditor emitting CycloneDX SBOM.</p>
+                <div class="h-card-tags">
+                  <span>Python 3</span>
+                  <span>Dalvik DEX</span>
+                  <span>AXML</span>
+                </div>
+                <div class="h-card-footer">
+                  <span class="h-card-link">View Architecture <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+              </div>
+
+              <!-- Card 2: JobFlow AI Recruitment -->
+              <div class="h-project-card glass-panel" onclick="openProjectModal('jobflow')">
+                <div class="h-card-top">
+                  <span class="h-card-badge flutter-badge"><i class="fa-brands fa-flutter"></i> Flutter</span>
+                  <span class="h-card-telemetry">Tri-Portal</span>
+                </div>
+                <h4 class="h-card-title">JobFlow — AI Recruitment</h4>
+                <p class="h-card-desc">Enterprise Flutter recruitment platform with automated resume NER parsing &amp; Firestore state sync.</p>
+                <div class="h-card-tags">
+                  <span>Flutter</span>
+                  <span>Firebase</span>
+                  <span>Python AI</span>
+                </div>
+                <div class="h-card-footer">
+                  <span class="h-card-link">View Architecture <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+              </div>
+
+              <!-- Card 3: Ai_Assistant -->
+              <div class="h-project-card glass-panel" onclick="openProjectModal('ai_assistant')">
+                <div class="h-card-top">
+                  <span class="h-card-badge ai-badge"><i class="fa-solid fa-brain"></i> Multimodal</span>
+                  <span class="h-card-telemetry">Vision AI</span>
+                </div>
+                <h4 class="h-card-title">Ai_Assistant Mobile</h4>
+                <p class="h-card-desc">Cross-platform intelligent assistant with prompt-to-image synthesis, chat, and neural translation.</p>
+                <div class="h-card-tags">
+                  <span>Flutter</span>
+                  <span>Gemini API</span>
+                  <span>Material 3</span>
+                </div>
+                <div class="h-card-footer">
+                  <span class="h-card-link">View Architecture <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+              </div>
+
+              <!-- Card 4: Enterprise Task Manager API -->
+              <div class="h-project-card glass-panel" onclick="openProjectModal('task_api')">
+                <div class="h-card-top">
+                  <span class="h-card-badge backend-badge"><i class="fa-solid fa-server"></i> Node.js</span>
+                  <span class="h-card-telemetry">100% Tests</span>
+                </div>
+                <h4 class="h-card-title">Task Manager REST Engine</h4>
+                <p class="h-card-desc">Production lifecycle REST API with JSON schema validation, error middleware, and Postman automated CI suites.</p>
+                <div class="h-card-tags">
+                  <span>Node.js</span>
+                  <span>Express</span>
+                  <span>Postman</span>
+                </div>
+                <div class="h-card-footer">
+                  <span class="h-card-link">View Architecture <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+              </div>
+
+              <!-- Card 5: Calamity Shield -->
+              <div class="h-project-card glass-panel" onclick="openProjectModal('calamity')">
+                <div class="h-card-top">
+                  <span class="h-card-badge sec-badge"><i class="fa-solid fa-triangle-exclamation"></i> Disaster SOS</span>
+                  <span class="h-card-telemetry">IoT Mesh</span>
+                </div>
+                <h4 class="h-card-title">Calamity Shield Emergency App</h4>
+                <p class="h-card-desc">Real-time disaster detection, offline SOS beaconing, and automated civil protection alert coordination.</p>
+                <div class="h-card-tags">
+                  <span>Flutter</span>
+                  <span>Geolocation</span>
+                  <span>IoT Cloud</span>
+                </div>
+                <div class="h-card-footer">
+                  <span class="h-card-link">View Architecture <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+              </div>
+
+              <!-- Card 6: Obstacle Avoidance Car -->
+              <div class="h-project-card glass-panel" onclick="openProjectModal('obstacle_car')">
+                <div class="h-card-top">
+                  <span class="h-card-badge hardware-badge"><i class="fa-solid fa-microchip"></i> Robotics</span>
+                  <span class="h-card-telemetry">Autonomous</span>
+                </div>
+                <h4 class="h-card-title">Autonomous Obstacle Avoidance Car</h4>
+                <p class="h-card-desc">Embedded Arduino robotics system using ultrasonic spatial scanning and servo-steered trajectory correction.</p>
+                <div class="h-card-tags">
+                  <span>C++</span>
+                  <span>Arduino</span>
+                  <span>Hardware IoT</span>
+                </div>
+                <div class="h-card-footer">
+                  <span class="h-card-link">View Architecture <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+              </div>
+
+              <!-- Card 7: Digital Alarm Clock System -->
+              <div class="h-project-card glass-panel" onclick="openProjectModal('alarm_system')">
+                <div class="h-card-top">
+                  <span class="h-card-badge hardware-badge"><i class="fa-solid fa-clock"></i> Embedded</span>
+                  <span class="h-card-telemetry">Hardware</span>
+                </div>
+                <h4 class="h-card-title">Digital Precision Alarm System</h4>
+                <p class="h-card-desc">Microcontroller timer with hardware interrupt registers, 7-segment LED display drivers, and low-power standby.</p>
+                <div class="h-card-tags">
+                  <span>Embedded C</span>
+                  <span>Timers</span>
+                  <span>Displays</span>
+                </div>
+                <div class="h-card-footer">
+                  <span class="h-card-link">View Architecture <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+              </div>
+
+              <!-- DUPLICATE SET 1-7 FOR SEAMLESS 100% INFINITE CONTINUOUS MARQUEE -->
+              <div class="h-project-card glass-panel" onclick="openProjectModal('apk_analyzer')">
+                <div class="h-card-top">
+                  <span class="h-card-badge sec-badge"><i class="fa-solid fa-shield-halved"></i> SAST</span>
+                  <span class="h-card-telemetry">3.8s Scan</span>
+                </div>
+                <h4 class="h-card-title">Mobile App Security Analyzer</h4>
+                <p class="h-card-desc">Zero-JVM bytecode parser &amp; OWASP Mobile Top 10 automated auditor emitting CycloneDX SBOM.</p>
+                <div class="h-card-tags"><span>Python 3</span><span>Dalvik DEX</span><span>AXML</span></div>
+                <div class="h-card-footer"><span class="h-card-link">View Architecture <i class="fa-solid fa-arrow-right"></i></span></div>
+              </div>
+              <div class="h-project-card glass-panel" onclick="openProjectModal('jobflow')">
+                <div class="h-card-top">
+                  <span class="h-card-badge flutter-badge"><i class="fa-brands fa-flutter"></i> Flutter</span>
+                  <span class="h-card-telemetry">Tri-Portal</span>
+                </div>
+                <h4 class="h-card-title">JobFlow — AI Recruitment</h4>
+                <p class="h-card-desc">Enterprise Flutter recruitment platform with automated resume NER parsing &amp; Firestore state sync.</p>
+                <div class="h-card-tags"><span>Flutter</span><span>Firebase</span><span>Python AI</span></div>
+                <div class="h-card-footer"><span class="h-card-link">View Architecture <i class="fa-solid fa-arrow-right"></i></span></div>
+              </div>
+              <div class="h-project-card glass-panel" onclick="openProjectModal('ai_assistant')">
+                <div class="h-card-top">
+                  <span class="h-card-badge ai-badge"><i class="fa-solid fa-brain"></i> Multimodal</span>
+                  <span class="h-card-telemetry">Vision AI</span>
+                </div>
+                <h4 class="h-card-title">Ai_Assistant Mobile</h4>
+                <p class="h-card-desc">Cross-platform intelligent assistant with prompt-to-image synthesis, chat, and neural translation.</p>
+                <div class="h-card-tags"><span>Flutter</span><span>Gemini API</span><span>Material 3</span></div>
+                <div class="h-card-footer"><span class="h-card-link">View Architecture <i class="fa-solid fa-arrow-right"></i></span></div>
+              </div>
+              <div class="h-project-card glass-panel" onclick="openProjectModal('task_api')">
+                <div class="h-card-top">
+                  <span class="h-card-badge backend-badge"><i class="fa-solid fa-server"></i> Node.js</span>
+                  <span class="h-card-telemetry">100% Tests</span>
+                </div>
+                <h4 class="h-card-title">Task Manager REST Engine</h4>
+                <p class="h-card-desc">Production lifecycle REST API with JSON schema validation, error middleware, and Postman automated CI suites.</p>
+                <div class="h-card-tags"><span>Node.js</span><span>Express</span><span>Postman</span></div>
+                <div class="h-card-footer"><span class="h-card-link">View Architecture <i class="fa-solid fa-arrow-right"></i></span></div>
+              </div>
+              <div class="h-project-card glass-panel" onclick="openProjectModal('calamity')">
+                <div class="h-card-top">
+                  <span class="h-card-badge sec-badge"><i class="fa-solid fa-triangle-exclamation"></i> Disaster SOS</span>
+                  <span class="h-card-telemetry">IoT Mesh</span>
+                </div>
+                <h4 class="h-card-title">Calamity Shield Emergency App</h4>
+                <p class="h-card-desc">Real-time disaster detection, offline SOS beaconing, and automated civil protection alert coordination.</p>
+                <div class="h-card-tags"><span>Flutter</span><span>Geolocation</span><span>IoT Cloud</span></div>
+                <div class="h-card-footer"><span class="h-card-link">View Architecture <i class="fa-solid fa-arrow-right"></i></span></div>
+              </div>
+              <div class="h-project-card glass-panel" onclick="openProjectModal('obstacle_car')">
+                <div class="h-card-top">
+                  <span class="h-card-badge hardware-badge"><i class="fa-solid fa-microchip"></i> Robotics</span>
+                  <span class="h-card-telemetry">Autonomous</span>
+                </div>
+                <h4 class="h-card-title">Autonomous Obstacle Avoidance Car</h4>
+                <p class="h-card-desc">Embedded Arduino robotics system using ultrasonic spatial scanning and servo-steered trajectory correction.</p>
+                <div class="h-card-tags"><span>C++</span><span>Arduino</span><span>Hardware IoT</span></div>
+                <div class="h-card-footer"><span class="h-card-link">View Architecture <i class="fa-solid fa-arrow-right"></i></span></div>
+              </div>
+              <div class="h-project-card glass-panel" onclick="openProjectModal('alarm_system')">
+                <div class="h-card-top">
+                  <span class="h-card-badge hardware-badge"><i class="fa-solid fa-clock"></i> Embedded</span>
+                  <span class="h-card-telemetry">Hardware</span>
+                </div>
+                <h4 class="h-card-title">Digital Precision Alarm System</h4>
+                <p class="h-card-desc">Microcontroller timer with hardware interrupt registers, 7-segment LED display drivers, and low-power standby.</p>
+                <div class="h-card-tags"><span>Embedded C</span><span>Timers</span><span>Displays</span></div>
+                <div class="h-card-footer"><span class="h-card-link">View Architecture <i class="fa-solid fa-arrow-right"></i></span></div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Controls for the Detailed Grid -->
+        <div class="projects-filter-tabs">
+          <button class="proj-filter-tab active" data-proj-filter="all">All Systems (7)</button>
+          <button class="proj-filter-tab" data-proj-filter="mobile">Mobile &amp; Flutter</button>
+          <button class="proj-filter-tab" data-proj-filter="security">Security &amp; SAST</button>
+          <button class="proj-filter-tab" data-proj-filter="backend">Backend &amp; AI</button>
+          <button class="proj-filter-tab" data-proj-filter="hardware">IoT &amp; Robotics</button>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
           
           <!-- Project 1: APK Security Analyzer -->
-          <div class="project-card glass-panel">
+          <div class="project-card glass-panel" data-proj-cat="security">
             <div class="project-banner">
               <div class="project-badge sec-badge"><i class="fa-solid fa-shield-halved"></i> Security &amp; SAST</div>
               <div class="project-preview-mockup">
@@ -590,7 +826,7 @@
           </div>
 
           <!-- Project 2: JobFlow AI Recruitment -->
-          <div class="project-card glass-panel">
+          <div class="project-card glass-panel" data-proj-cat="mobile">
             <div class="project-banner">
               <div class="project-badge flutter-badge"><i class="fa-brands fa-flutter"></i> Flutter &amp; AI</div>
               <div class="project-preview-mockup">
@@ -637,7 +873,7 @@
           </div>
 
           <!-- Project 3: AI Assistant Multimodal -->
-          <div class="project-card glass-panel">
+          <div class="project-card glass-panel" data-proj-cat="backend">
             <div class="project-banner">
               <div class="project-badge ai-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> Multimodal AI</div>
               <div class="project-preview-mockup">
@@ -684,7 +920,7 @@
           </div>
 
           <!-- Project 4: Enterprise Task Manager API -->
-          <div class="project-card glass-panel">
+          <div class="project-card glass-panel" data-proj-cat="backend">
             <div class="project-banner">
               <div class="project-badge backend-badge"><i class="fa-solid fa-server"></i> Backend &amp; APIs</div>
               <div class="project-preview-mockup">
@@ -724,6 +960,147 @@
                   <i class="fa-brands fa-github"></i> Source Code
                 </a>
                 <button class="btn btn-glass btn-sm" onclick="openProjectModal('task_api')">
+                  <i class="fa-solid fa-circle-info"></i> Architecture
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5: Calamity Shield Emergency System -->
+          <div class="project-card glass-panel" data-proj-cat="mobile">
+            <div class="project-banner">
+              <div class="project-badge sec-badge"><i class="fa-solid fa-triangle-exclamation"></i> Mobile &amp; Disaster SOS</div>
+              <div class="project-preview-mockup">
+                <div class="mockup-header">
+                  <span class="m-dot red"></span><span class="m-dot yellow"></span><span class="m-dot green"></span>
+                  <span class="mockup-title">Calamity_Shield Mobile</span>
+                </div>
+                <div class="mockup-body">
+                  <code>[Sensors]: Seismic Tremor Alert Threshold EXCEEDED</code><br />
+                  <span class="green-text">[+] Offline Emergency P2P Mesh Beacon Active</span><br />
+                  <span class="blue-text">[+] GeoCoordinates Broadcast to Emergency Services</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="lang-tag"><i class="fa-brands fa-flutter"></i> Flutter / Dart</span>
+                <span class="stars-tag"><i class="fa-solid fa-tower-broadcast"></i> IoT &amp; SOS</span>
+              </div>
+
+              <h3 class="project-title">Calamity Shield — Disaster Detection &amp; SOS Network</h3>
+              <p class="project-description">
+                Lifesaving emergency response mobile system designed to deliver instant earthquake, flood, and weather alerts. Features offline peer-to-peer distress beaconing, nearest medical facility routing, and automated one-touch SOS location dispatch.
+              </p>
+
+              <div class="project-tech-stack">
+                <span>Flutter</span>
+                <span>Dart</span>
+                <span>Geolocation API</span>
+                <span>Offline Cache</span>
+                <span>Emergency Broadcast</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="https://github.com/diya2405" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                  <i class="fa-brands fa-github"></i> Source Code
+                </a>
+                <button class="btn btn-glass btn-sm" onclick="openProjectModal('calamity')">
+                  <i class="fa-solid fa-circle-info"></i> Architecture
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 6: Autonomous Obstacle Avoidance Car -->
+          <div class="project-card glass-panel" data-proj-cat="hardware">
+            <div class="project-banner">
+              <div class="project-badge hardware-badge"><i class="fa-solid fa-microchip"></i> Robotics &amp; Sensors</div>
+              <div class="project-preview-mockup">
+                <div class="mockup-header">
+                  <span class="m-dot red"></span><span class="m-dot yellow"></span><span class="m-dot green"></span>
+                  <span class="mockup-title">Obstacle_Avoidance_Vehicle</span>
+                </div>
+                <div class="mockup-body">
+                  <code>[Ultrasonic HC-SR04]: Distance = 12.4 cm &lt; LIMIT</code><br />
+                  <span class="purple-text">[Servo Steer]: Sweeping 180° Range ... Path Clear at 78°</span><br />
+                  <span class="green-text">[Motor Driver L298N]: Trajectory Corrected (0ms Collision)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="lang-tag"><i class="fa-solid fa-microchip"></i> Embedded C++</span>
+                <span class="stars-tag"><i class="fa-solid fa-bolt"></i> Realtime Sensor</span>
+              </div>
+
+              <h3 class="project-title">Autonomous Obstacle Avoidance Robotic Car</h3>
+              <p class="project-description">
+                Smart robotic vehicular system powered by embedded Arduino microcontrollers. Continuously scans 180-degree physical clearance using ultrasonic transducers, dynamically calculating obstacle-free paths and driving twin H-bridge DC motors autonomously.
+              </p>
+
+              <div class="project-tech-stack">
+                <span>Embedded C++</span>
+                <span>Arduino</span>
+                <span>HC-SR04 Ultrasonic</span>
+                <span>L298N Driver</span>
+                <span>Robotics</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="https://github.com/diya2405" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                  <i class="fa-brands fa-github"></i> Source Code
+                </a>
+                <button class="btn btn-glass btn-sm" onclick="openProjectModal('obstacle_car')">
+                  <i class="fa-solid fa-circle-info"></i> Architecture
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 7: Digital Precision Alarm System -->
+          <div class="project-card glass-panel" data-proj-cat="hardware">
+            <div class="project-banner">
+              <div class="project-badge hardware-badge"><i class="fa-solid fa-clock"></i> Embedded &amp; Timers</div>
+              <div class="project-preview-mockup">
+                <div class="mockup-header">
+                  <span class="m-dot red"></span><span class="m-dot yellow"></span><span class="m-dot green"></span>
+                  <span class="mockup-title">Digital_Alarm_Controller</span>
+                </div>
+                <div class="mockup-body">
+                  <code>[Timer Interrupt]: 1000Hz CTC Prescaler 64</code><br />
+                  <span class="blue-text">[Display Driver]: Multiplexed 7-Segment RTC Sync</span><br />
+                  <span class="green-text">[Low-Power Mode]: Sleep State Enabled (94% Power Saved)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="lang-tag"><i class="fa-solid fa-code"></i> Embedded C</span>
+                <span class="stars-tag"><i class="fa-solid fa-microchip"></i> Microcontroller</span>
+              </div>
+
+              <h3 class="project-title">Digital Precision Alarm &amp; Timing Controller</h3>
+              <p class="project-description">
+                Hardware-level digital clock and alarm control unit engineered with custom interrupt service routines (ISR), 7-segment LED multiplexing, programmable buzzer tone generation, and power-saving sleep modes for maximum battery efficiency.
+              </p>
+
+              <div class="project-tech-stack">
+                <span>Embedded C</span>
+                <span>Interrupt Registers</span>
+                <span>7-Segment Displays</span>
+                <span>RTC Timing</span>
+                <span>Circuit Design</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="https://github.com/diya2405" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                  <i class="fa-brands fa-github"></i> Source Code
+                </a>
+                <button class="btn btn-glass btn-sm" onclick="openProjectModal('alarm_system')">
                   <i class="fa-solid fa-circle-info"></i> Architecture
                 </button>
               </div>

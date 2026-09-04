@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initTypewriter();
   initAIAvatarVoice();
   initSkillsFilter();
+  initProjectsFilter();
+  initHorizontalMarquee();
+  initTelemetryCounters();
   initCertificatesFilter();
   initNavigation();
   initDiagnosticsCopy();
@@ -142,11 +145,44 @@ function initDiyaWorldIntro() {
   const theaterWaveform = document.getElementById("theaterWaveform");
   const videoStatusChipText = document.getElementById("videoStatusChipText");
   const heroPlayAvatarBtn = document.getElementById("heroPlayAvatarBtn");
+  const introVideoElement = document.getElementById("introVideoElement");
+  const videoPlayCenterBtn = document.getElementById("videoPlayCenterBtn");
 
   if (!introTheater) return;
 
   // Setup Cosmic Starfield Background
   initStarfield();
+
+  // Video center button and element controls
+  if (videoPlayCenterBtn && introVideoElement) {
+    videoPlayCenterBtn.addEventListener("click", () => {
+      if (introVideoElement.paused) {
+        introVideoElement.play();
+        videoPlayCenterBtn.classList.add("playing");
+      } else {
+        introVideoElement.pause();
+        videoPlayCenterBtn.classList.remove("playing");
+      }
+    });
+
+    introVideoElement.addEventListener("click", () => {
+      if (introVideoElement.paused) {
+        introVideoElement.play();
+        videoPlayCenterBtn.classList.add("playing");
+      } else {
+        introVideoElement.pause();
+        videoPlayCenterBtn.classList.remove("playing");
+      }
+    });
+
+    introVideoElement.addEventListener("play", () => {
+      videoPlayCenterBtn.classList.add("playing");
+    });
+
+    introVideoElement.addEventListener("pause", () => {
+      videoPlayCenterBtn.classList.remove("playing");
+    });
+  }
 
   // Handle Mute Button
   if (theaterMuteBtn) {
@@ -154,13 +190,15 @@ function initDiyaWorldIntro() {
       theaterMuted = !theaterMuted;
       if (theaterMuted) {
         if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+        if (introVideoElement) introVideoElement.muted = true;
         if (theaterMuteIcon) theaterMuteIcon.className = "fa-solid fa-volume-xmark";
         if (theaterMuteText) theaterMuteText.textContent = "Unmute";
-        showToast("Voice muted (Teleprompter active)");
+        showToast("Audio muted (Teleprompter active)");
       } else {
+        if (introVideoElement) introVideoElement.muted = false;
         if (theaterMuteIcon) theaterMuteIcon.className = "fa-solid fa-volume-high";
         if (theaterMuteText) theaterMuteText.textContent = "Mute Voice";
-        showToast("Voice unmuted");
+        showToast("Audio unmuted");
       }
     });
   }
@@ -170,6 +208,10 @@ function initDiyaWorldIntro() {
     theaterSpeaking = false;
     if ("speechSynthesis" in window) {
       window.speechSynthesis.cancel();
+    }
+    if (introVideoElement) {
+      introVideoElement.pause();
+      introVideoElement.currentTime = 0;
     }
     if (theaterWaveform) theaterWaveform.classList.remove("active");
 
@@ -213,7 +255,7 @@ function initDiyaWorldIntro() {
       if (progress > 30 && progress < 65) {
         if (preloaderStatusText) preloaderStatusText.textContent = "Tuning Low-Level Bytecode & Security Engines...";
       } else if (progress >= 65 && progress < 100) {
-        if (preloaderStatusText) preloaderStatusText.textContent = "Synthesizing Voice Agent & Systems Telemetry...";
+        if (preloaderStatusText) preloaderStatusText.textContent = "Synthesizing Video Stream & Telemetry...";
       } else if (progress === 100) {
         clearInterval(interval);
         if (preloaderStatusText) preloaderStatusText.textContent = "Welcome to Diya's World ✨";
@@ -239,6 +281,12 @@ function initDiyaWorldIntro() {
 
   function startVideoSpeechSequence() {
     currentSentenceIndex = 0;
+    if (introVideoElement) {
+      introVideoElement.currentTime = 0;
+      introVideoElement.play().then(() => {
+        if (videoPlayCenterBtn) videoPlayCenterBtn.classList.add("playing");
+      }).catch(() => {});
+    }
     playCurrentSentence();
   }
 
@@ -581,6 +629,90 @@ const projectSpecs = {
         </ul>
       </div>
     `
+  },
+  calamity: {
+    title: "Calamity Shield — Disaster Detection & SOS Network Architecture",
+    repo: "https://github.com/diya2405",
+    content: `
+      <div class="spec-modal-content">
+        <h4>🚨 Real-Time Civil Protection &amp; Disaster SOS Mesh</h4>
+        <p>A mission-critical emergency system delivering seismic, flood, and meteorological early warnings with offline peer-to-peer distress beaconing.</p>
+        
+        <div class="spec-diagram">
+          <pre><code>[Seismic / Meteorological IoT Sensors]
+                    │
+                    ▼
+       [Cloud Telemetry Ingestion API]
+                    │
+                    ▼
+         [Firebase Geo-Fencing Service]
+                    │
+                    ▼
+     [Flutter Client Emergency Mesh Broadcast]
+      ├── Automated 1-Touch GPS Distress Beacon
+      ├── Offline Route Cache to Nearest Hospital
+      └── P2P Bluetooth / Wi-Fi Mesh Relay</code></pre>
+        </div>
+
+        <h4 style="margin-top: 18px;">Engineering Focus:</h4>
+        <ul style="margin-left: 20px; color: #94a3b8; line-height: 1.8;">
+          <li><strong>Zero-Connectivity Fallback</strong>: Transmits encrypted distress payloads via mesh packets when cell networks collapse.</li>
+          <li><strong>High-Precision Geolocation</strong>: Real-time coordinate resolution within 3 meters.</li>
+          <li><strong>Battery-Conserving Background Daemons</strong>: Wake-lock management for maximum survivability during grid outages.</li>
+        </ul>
+      </div>
+    `
+  },
+  obstacle_car: {
+    title: "Autonomous Obstacle Avoidance Robotic Car — Embedded Architecture",
+    repo: "https://github.com/diya2405",
+    content: `
+      <div class="spec-modal-content">
+        <h4>🤖 Autonomous Sensor Vectoring &amp; Actuation</h4>
+        <p>Microcontroller-driven robotics platform executing continuous spatial distance acquisition and autonomous collision avoidance.</p>
+        
+        <div class="spec-diagram">
+          <pre><code>[HC-SR04 Ultrasonic Transducer] ──► [Echo Pulse Timing (10µs Trigger)]
+                                                  │
+                                                  ▼
+                               [ATmega328P Hardware Interrupts]
+                                                  │
+                                                  ▼
+                           [Spatial Clearance Angle Calculation]
+                                ├── &lt; 15cm: Reverse &amp; Servo Sweep (30°-150°)
+                                └── &gt; 15cm: Full Forward Throttle
+                                                  │
+                                                  ▼
+                                 [L298N Dual H-Bridge Motor Driver]
+                                ├── Left DC Motor (PWM Duty Cycle)
+                                └── Right DC Motor (PWM Duty Cycle)</code></pre>
+        </div>
+
+        <h4 style="margin-top: 18px;">Engineering Focus:</h4>
+        <ul style="margin-left: 20px; color: #94a3b8; line-height: 1.8;">
+          <li><strong>Sub-Millisecond Echo Measurement</strong>: Real-time sonic time-of-flight distance calculation.</li>
+          <li><strong>PWM Motor Speed Control</strong>: Smooth dynamic torque and differential steering.</li>
+          <li><strong>Fail-Safe Collision Logic</strong>: Emergency stop triggers if all forward vectors drop below safety limits.</li>
+        </ul>
+      </div>
+    `
+  },
+  alarm_system: {
+    title: "Digital Precision Alarm &amp; Timing Controller — System Spec",
+    repo: "https://github.com/diya2405",
+    content: `
+      <div class="spec-modal-content">
+        <h4>⏱️ Hardware Timer Interrupts &amp; Display Multiplexing</h4>
+        <p>Embedded electronic timing system utilizing crystal oscillator interrupts, 7-segment LED display multiplexing, and low-power standby modes.</p>
+        
+        <h4 style="margin-top: 18px;">Technical Features:</h4>
+        <ul style="margin-left: 20px; color: #94a3b8; line-height: 1.8;">
+          <li><strong>CTC Mode Clock Precision</strong>: Hardware Clear-Timer-on-Compare interrupts ensuring deterministic 1ms RTC ticks.</li>
+          <li><strong>Persistence of Vision (POV) Multiplexing</strong>: 120Hz high-frequency display refresh with zero visible flicker.</li>
+          <li><strong>Low-Power Sleep Wakeup</strong>: Pin-change interrupt triggers saving up to 94% idle battery draw.</li>
+        </ul>
+      </div>
+    `
   }
 };
 
@@ -631,6 +763,136 @@ window.addEventListener("keydown", (e) => {
     closeProjectModal();
   }
 });
+
+/* ==========================================================================
+   6. PROJECTS FILTER & HORIZONTAL MARQUEE CONTROLLER
+   ========================================================================== */
+function initProjectsFilter() {
+  const tabs = document.querySelectorAll(".projects-filter-tabs .proj-filter-tab");
+  const cards = document.querySelectorAll(".projects-grid .project-card");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+
+      const filter = tab.getAttribute("data-proj-filter");
+
+      cards.forEach(card => {
+        const cat = card.getAttribute("data-proj-cat");
+        if (filter === "all" || filter === cat) {
+          card.style.display = "flex";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+}
+
+function initHorizontalMarquee() {
+  const container = document.getElementById("horizontalMarqueeContainer");
+  const track = document.getElementById("marqueeTrack");
+  const prevBtn = document.getElementById("streamPrevBtn");
+  const nextBtn = document.getElementById("streamNextBtn");
+
+  if (!container || !track) return;
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      track.style.animationPlayState = "paused";
+      container.scrollBy({ left: -360, behavior: "smooth" });
+      setTimeout(() => {
+        track.style.animationPlayState = "running";
+      }, 2500);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      track.style.animationPlayState = "paused";
+      container.scrollBy({ left: 360, behavior: "smooth" });
+      setTimeout(() => {
+        track.style.animationPlayState = "running";
+      }, 2500);
+    });
+  }
+
+  // Mouse drag to scrub horizontally on desktop
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  container.addEventListener("mousedown", (e) => {
+    isDown = true;
+    track.style.animationPlayState = "paused";
+    startX = e.pageX - container.offsetLeft;
+    scrollLeft = container.scrollLeft;
+  });
+
+  container.addEventListener("mouseleave", () => {
+    isDown = false;
+    track.style.animationPlayState = "running";
+  });
+
+  container.addEventListener("mouseup", () => {
+    isDown = false;
+    track.style.animationPlayState = "running";
+  });
+
+  container.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    container.scrollLeft = scrollLeft - walk;
+  });
+}
+
+/* ==========================================================================
+   7. LIVE TELEMETRY COUNTER ANIMATIONS
+   ========================================================================== */
+function initTelemetryCounters() {
+  const counterElements = document.querySelectorAll(".counter-value");
+  if (!counterElements.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.classList.contains("counted")) {
+        entry.target.classList.add("counted");
+        animateCounter(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  counterElements.forEach(el => observer.observe(el));
+
+  function animateCounter(el) {
+    const target = parseFloat(el.getAttribute("data-target")) || 0;
+    const decimals = parseInt(el.getAttribute("data-decimals")) || 0;
+    const prefix = el.getAttribute("data-prefix") || "";
+    const suffix = el.getAttribute("data-suffix") || "";
+    const duration = 1600;
+    const startTime = performance.now();
+
+    function step(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const currentVal = (target * ease).toFixed(decimals);
+
+      el.textContent = `${prefix}${currentVal}${suffix}`;
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = `${prefix}${target.toFixed(decimals)}${suffix}`;
+      }
+    }
+
+    requestAnimationFrame(step);
+  }
+}
 
 /* ==========================================================================
    6. NAVIGATION, SCROLL SPY & MOBILE MENU

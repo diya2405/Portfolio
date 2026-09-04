@@ -7,7 +7,7 @@ if (!fs.existsSync(dist)) {
 }
 
 // Copy essential files to dist
-const filesToCopy = ['index.html', 'style.css', 'script.js', 'diya_avatar.jpg'];
+const filesToCopy = ['index.html', 'style.css', 'script.js', 'diya_avatar.jpg', 'gemini_generated_video_5bb573a1.mp4'];
 for (const file of filesToCopy) {
   const src = path.join(__dirname, file);
   if (fs.existsSync(src)) {
