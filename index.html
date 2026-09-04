@@ -70,7 +70,7 @@
         <div class="stage-header">
           <div class="live-broadcast-tag">
             <span class="pulse-recording-dot"></span>
-            <span>LIVE AI AVATAR • 4K STREAM</span>
+            <span>DIYA'S VOICE INTRO</span>
           </div>
           <button class="theater-btn-mute" id="theaterMuteBtn" aria-label="Toggle Voice Mute">
             <i class="fa-solid fa-volume-high" id="theaterMuteIcon"></i>
@@ -78,13 +78,11 @@
           </button>
         </div>
 
-        <!-- Video Frame with Live Lip-Sync Canvas -->
+        <!-- Audio Showcase Frame with Diya's Studio Portrait -->
         <div class="video-pod glass-panel">
           <div class="video-viewport">
-            <!-- 60fps Lip-Sync + Micro-Blink Canvas -->
-            <canvas id="avatarCanvas" width="600" height="600" class="avatar-canvas"></canvas>
-            
-            <div class="video-overlay-fx"></div>
+            <!-- Crisp Studio Portrait -->
+            <img src="diya_avatar.jpg" alt="Diya Shah - Studio Portrait" class="avatar-theater-img" id="avatarTheaterImg" />
             
             <!-- Hologram Live Waveform Equalizer -->
             <div class="theater-waveform" id="theaterWaveform">
@@ -94,10 +92,10 @@
               <span class="wf-bar"></span><span class="wf-bar"></span><span class="wf-bar"></span>
             </div>
 
-            <!-- Status Badge in Video -->
+            <!-- Status Badge -->
             <div class="video-status-chip">
-              <i class="fa-solid fa-wand-magic-sparkles"></i>
-              <span id="videoStatusChipText">Diya's Voice Agent (Female TTS)</span>
+              <i class="fa-solid fa-volume-high"></i>
+              <span id="videoStatusChipText">Diya's Voice Agent</span>
             </div>
           </div>
 
@@ -198,7 +196,7 @@
             </a>
             <button class="btn btn-glass" id="heroPlayAvatarBtn">
               <i class="fa-solid fa-wand-magic-sparkles"></i>
-              <span>Watch AI Video Intro</span>
+              <span>Listen to Voice Intro</span>
             </button>
             <button class="btn btn-outline" onclick="downloadResume()">
               <i class="fa-solid fa-file-arrow-down"></i>

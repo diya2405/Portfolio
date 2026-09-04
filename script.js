@@ -148,9 +148,6 @@ function initDiyaWorldIntro() {
   // Setup Cosmic Starfield Background
   initStarfield();
 
-  // Setup AI Avatar Lip-Sync & Face Canvas
-  const avatarController = initAvatarCanvas();
-
   // Handle Mute Button
   if (theaterMuteBtn) {
     theaterMuteBtn.addEventListener("click", () => {
@@ -174,7 +171,6 @@ function initDiyaWorldIntro() {
     if ("speechSynthesis" in window) {
       window.speechSynthesis.cancel();
     }
-    if (avatarController) avatarController.setSpeaking(false);
     if (theaterWaveform) theaterWaveform.classList.remove("active");
 
     introTheater.classList.add("portal-exit");
@@ -189,7 +185,7 @@ function initDiyaWorldIntro() {
   if (theaterSkipBtn) theaterSkipBtn.addEventListener("click", exitIntroTheater);
   if (theaterExploreBtn) theaterExploreBtn.addEventListener("click", exitIntroTheater);
 
-  // Global launcher to re-trigger video intro theatre anytime!
+  // Global launcher to re-trigger voice intro theatre anytime!
   launchVideoExperienceDirectly = function() {
     introTheater.style.display = "flex";
     introTheater.classList.remove("portal-exit");
@@ -217,7 +213,7 @@ function initDiyaWorldIntro() {
       if (progress > 30 && progress < 65) {
         if (preloaderStatusText) preloaderStatusText.textContent = "Tuning Low-Level Bytecode & Security Engines...";
       } else if (progress >= 65 && progress < 100) {
-        if (preloaderStatusText) preloaderStatusText.textContent = "Calibrating Neural Voice Agent & 60fps Lip-Sync...";
+        if (preloaderStatusText) preloaderStatusText.textContent = "Synthesizing Voice Agent & Systems Telemetry...";
       } else if (progress === 100) {
         clearInterval(interval);
         if (preloaderStatusText) preloaderStatusText.textContent = "Welcome to Diya's World ✨";
@@ -250,7 +246,6 @@ function initDiyaWorldIntro() {
     if (currentSentenceIndex >= diyaIntroScript.length) {
       // Intro completed
       theaterSpeaking = false;
-      if (avatarController) avatarController.setSpeaking(false);
       if (theaterWaveform) theaterWaveform.classList.remove("active");
       if (videoStatusChipText) videoStatusChipText.innerHTML = "Intro Complete ✨ Click Explore Below";
       return;
@@ -269,7 +264,6 @@ function initDiyaWorldIntro() {
     }
 
     if (theaterWaveform) theaterWaveform.classList.add("active");
-    if (avatarController) avatarController.setSpeaking(true);
 
     if ("speechSynthesis" in window && !theaterMuted) {
       window.speechSynthesis.cancel();
@@ -283,15 +277,8 @@ function initDiyaWorldIntro() {
         if (videoStatusChipText) videoStatusChipText.textContent = `Speaking (${voice.name.replace(/Microsoft|Google|Desktop/gi, '').trim()} Female AI)`;
       }
 
-      theaterUtterance.onboundary = (e) => {
-        if (avatarController && e.name === "word") {
-          avatarController.pulseViseme();
-        }
-      };
-
       theaterUtterance.onend = () => {
         if (!theaterSpeaking) return;
-        if (avatarController) avatarController.setSpeaking(false);
         if (theaterWaveform) theaterWaveform.classList.remove("active");
         currentSentenceIndex++;
         setTimeout(() => {
@@ -301,7 +288,6 @@ function initDiyaWorldIntro() {
 
       theaterUtterance.onerror = () => {
         if (!theaterSpeaking) return;
-        if (avatarController) avatarController.setSpeaking(false);
         if (theaterWaveform) theaterWaveform.classList.remove("active");
         currentSentenceIndex++;
         setTimeout(() => {
@@ -315,7 +301,6 @@ function initDiyaWorldIntro() {
       const duration = Math.max(3400, item.speech.split(" ").length * 360);
       setTimeout(() => {
         if (!theaterSpeaking) return;
-        if (avatarController) avatarController.setSpeaking(false);
         if (theaterWaveform) theaterWaveform.classList.remove("active");
         currentSentenceIndex++;
         setTimeout(() => {
@@ -377,132 +362,6 @@ function initStarfield() {
     starAnimationId = requestAnimationFrame(drawStars);
   }
   drawStars();
-}
-
-// --------------------------------------------------------------------------
-// AI Avatar 60fps Lip-Sync & Face Controller
-// --------------------------------------------------------------------------
-function initAvatarCanvas() {
-  const canvas = document.getElementById("avatarCanvas");
-  if (!canvas) return null;
-  const ctx = canvas.getContext("2d");
-
-  const avatarImg = new Image();
-  avatarImg.src = "diya_avatar.jpg";
-
-  let isLoaded = false;
-  avatarImg.onload = () => {
-    isLoaded = true;
-  };
-
-  let speaking = false;
-  let targetMouthOpen = 0;
-  let currentMouthOpen = 0;
-  let mouthVisemeTimer = 0;
-
-  let blinkState = 0;
-  let blinkTimer = 0;
-  let nextBlinkTime = 180 + Math.random() * 120;
-
-  function render(time) {
-    ctx.clearRect(0, 0, 600, 600);
-
-    if (isLoaded) {
-      // 1. Subtle Breathing & Tilt
-      const breathY = Math.sin(time * 0.002) * 1.8;
-      const tilt = Math.sin(time * 0.001) * 0.006;
-
-      ctx.save();
-      ctx.translate(300, 300 + breathY);
-      ctx.rotate(tilt);
-      ctx.drawImage(avatarImg, -300, -300, 600, 600);
-
-      // 2. Natural Micro-Blink
-      blinkTimer++;
-      if (blinkTimer >= nextBlinkTime) {
-        blinkState += 0.25;
-        if (blinkState >= 1) {
-          blinkState = 0;
-          blinkTimer = 0;
-          nextBlinkTime = 160 + Math.random() * 140;
-        }
-      }
-
-      if (blinkState > 0.05) {
-        ctx.save();
-        ctx.fillStyle = "rgba(196, 142, 119, 0.92)";
-        // Left Eye Eyelid
-        ctx.beginPath();
-        ctx.ellipse(264 - 300, 158 - 300, 13, 5 * blinkState, 0, 0, Math.PI * 2);
-        ctx.fill();
-        // Right Eye Eyelid
-        ctx.beginPath();
-        ctx.ellipse(334 - 300, 155 - 300, 13, 5 * blinkState, 0, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-      }
-
-      // 3. Lip-Sync Mouth Opening
-      if (speaking) {
-        mouthVisemeTimer++;
-        const cadence = (Math.sin(mouthVisemeTimer * 0.28) + 1) * 0.4 + (Math.sin(mouthVisemeTimer * 0.65) + 1) * 0.2;
-        targetMouthOpen = Math.min(1.0, cadence);
-      } else {
-        targetMouthOpen = 0;
-      }
-
-      currentMouthOpen += (targetMouthOpen - currentMouthOpen) * 0.35;
-
-      if (currentMouthOpen > 0.08) {
-        ctx.save();
-        const mx = 302 - 300;
-        const my = 236 - 300;
-        const mw = 22;
-        const mh = currentMouthOpen * 6.5;
-
-        // Inner mouth opening cavity
-        ctx.beginPath();
-        ctx.ellipse(mx, my + 2, mw * 0.85, mh, 0, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(75, 20, 24, 0.88)";
-        ctx.fill();
-
-        // Subtle upper teeth highlight
-        if (currentMouthOpen > 0.25) {
-          ctx.beginPath();
-          ctx.ellipse(mx, my + 1, mw * 0.55, 1.8, 0, 0, Math.PI);
-          ctx.fillStyle = "rgba(245, 242, 238, 0.85)";
-          ctx.fill();
-        }
-
-        // Lower lip descent
-        ctx.beginPath();
-        ctx.ellipse(mx, my + mh + 2.5, mw * 0.9, 3.2, 0, 0, Math.PI);
-        ctx.fillStyle = "rgba(180, 78, 86, 0.7)";
-        ctx.fill();
-
-        ctx.restore();
-      }
-
-      ctx.restore();
-    }
-
-    avatarAnimationId = requestAnimationFrame(render);
-  }
-
-  render(0);
-
-  return {
-    setSpeaking(val) {
-      speaking = val;
-      if (!val) {
-        targetMouthOpen = 0;
-      }
-    },
-    pulseViseme() {
-      mouthVisemeTimer += 1.5;
-      targetMouthOpen = Math.min(1.0, targetMouthOpen + 0.35);
-    }
-  };
 }
 
 /* ==========================================================================
